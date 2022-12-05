@@ -50,7 +50,7 @@ public class TS_01_Register extends BasePage {
 		Assert.assertTrue(registerPage.isEmailErrorMessage("Wrong email"));
 	}
 
-	//@Test
+	@Test
 	public void TC_03_RegisterWithIfCorrect() {
 
 		registerPage.refeshCurrentPage(driver);
@@ -108,7 +108,7 @@ public class TS_01_Register extends BasePage {
 		Assert.assertTrue(registerPage.isPasswordLess6LiErrorMessage("must have at least 6 characters"));
 	}
 
-	@Test
+	//@Test
 	public void TC_06_RegisterWithPasswordNotMath() {
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
