@@ -38,16 +38,16 @@ public class RegisterPageObject extends BasePage {
 		sendKeysToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, email);
 	}
 
-	public void inputToCompanyTextbox(String email) {
-		sendKeysToElement(driver, RegisterPageUI.COMPANY_TEXTBOX, email);
+	public void inputToCompanyTextbox(String company) {
+		sendKeysToElement(driver, RegisterPageUI.COMPANY_TEXTBOX, company);
 	}
 
-	public void inputToPasswordTextbox(String email) {
-		sendKeysToElement(driver, RegisterPageUI.PASSSWORD_TEXTBOX, email);
+	public void inputToPasswordTextbox(String password) {
+		sendKeysToElement(driver, RegisterPageUI.PASSSWORD_TEXTBOX, password);
 	}
 
-	public void inputToConfirmPasswordTextbox(String email) {
-		sendKeysToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, email);
+	public void inputToConfirmPasswordTextbox(String confirmPassword) {
+		sendKeysToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassword);
 	}
 
 	public void clickToRegisterButton() {
@@ -90,18 +90,7 @@ public class RegisterPageObject extends BasePage {
 		String message = getTextOfElement(driver, RegisterPageUI.PASSWORD_ERROR_MESSAGE);
 		return message.contains(value);
 	}
-	public boolean isPasswordLess6PErrorMessage(String value) {
-		String message = getTextOfElement(driver, RegisterPageUI.PASSWORD_LESS_6_P_ERROR_MESSAGE);
-		return message.contains(value);
-	}
-	public boolean isPasswordLess6LiErrorMessage(String value) {
-		String message = getTextOfElement(driver, RegisterPageUI.PASSWORD_LESS_6_LI_ERROR_MESSAGE);
-		return message.contains(value);
-	}
-	public boolean isConfirmPasswordErrorMessage(String value) {
-		String message = getTextOfElement(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
-		return message.contains(value);
-	}
+
 	public boolean isConfirmNotMatchErrorMessage(String value) {
 		String message = getTextOfElement(driver, RegisterPageUI.PASSWORD_NOT_MATCH_ERROR_MESSAGE);
 		return message.contains(value);

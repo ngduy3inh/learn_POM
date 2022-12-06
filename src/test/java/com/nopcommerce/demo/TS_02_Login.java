@@ -46,7 +46,7 @@ public class TS_02_Login {
 	@Test
 	public void TC_02_LoginWithInvalidData() {
 		loginPage.refeshCurrentPage(driver);
-		loginPage.inputToEmailTextbox(GlobalContants.wrong_email);
+		loginPage.inputToEmailTextbox(GlobalContants.wrongEmail);
 		loginPage.clickToLoginButton();
 		Assert.assertTrue(loginPage.isEmailErrorMessage("Wrong email"));
 	}
@@ -64,7 +64,6 @@ public class TS_02_Login {
 	@Test
 	public void TC_04_LoginWithRegisteredEmailAndPasswordEmpty() {
 		loginPage.loginWithAccount(GlobalContants.RegisteredEmail, "");
-		loginPage.clickToLoginButton();
 		Assert.assertTrue(
 				loginPage.isLoginErrorMessage("Login was unsuccessful. Please correct the errors and try again."));
 		Assert.assertTrue(loginPage.isLoginErrorMessage("The credentials provided are incorrect"));
@@ -73,7 +72,6 @@ public class TS_02_Login {
 	@Test
 	public void TC_05_LoginWithRegisteredEmailAndInvalidPassword() {
 		loginPage.loginWithAccount(GlobalContants.RegisteredEmail, GlobalContants.invalidPassword);
-		loginPage.clickToLoginButton();
 		Assert.assertTrue(
 				loginPage.isLoginErrorMessage("Login was unsuccessful. Please correct the errors and try again."));
 		Assert.assertTrue(loginPage.isLoginErrorMessage("The credentials provided are incorrect"));
@@ -82,7 +80,6 @@ public class TS_02_Login {
 	@Test
 	public void TC_06_LoginWithValidAccount() {
 		loginPage.loginWithAccount(GlobalContants.RegisteredEmail, GlobalContants.password);
-		loginPage.clickToLoginButton();
 		Assert.assertTrue(loginPage.isLoged("My account"));
 	}
 }

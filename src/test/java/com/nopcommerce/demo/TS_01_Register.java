@@ -16,10 +16,10 @@ public class TS_01_Register extends BasePage {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	RegisterPageObject registerPage;
-
+	String url = "https://demo.nopcommerce.com/register?returnUrl=%2F";
+	
 	@BeforeClass
 	public void beforeClass() {
-		String url = "https://demo.nopcommerce.com/register?returnUrl=%2F";
 		System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get(url);
@@ -29,23 +29,23 @@ public class TS_01_Register extends BasePage {
 
 	@AfterClass
 	public void afterClass(){
-		//driver.quit();
+		driver.quit();
 	}
 
-//	@Test
+	@Test
 	public void TC_01_RegisterWithEmtyData() {
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.isFirstNameErrorMessage("First name is required."));
 		Assert.assertTrue(registerPage.isLastNameErrorMessage("Last name is required."));
 		Assert.assertTrue(registerPage.isEmailErrorMessage("Email is required."));
 		Assert.assertTrue(registerPage.isPasswordErrorMessage("Password is required."));
-		Assert.assertTrue(registerPage.isConfirmPasswordErrorMessage("Password is required."));
+		Assert.assertTrue(registerPage.isPasswordErrorMessage("Password is required."));
 	}
 
-	//@Test
+	@Test
 	public void TC_02_RegisterWithInvalidEmail() {
 		registerPage.refeshCurrentPage(driver);
-		registerPage.inputToEmailTextbox(GlobalContants.wrong_email);
+		registerPage.inputToEmailTextbox(GlobalContants.wrongEmail);
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.isEmailErrorMessage("Wrong email"));
 	}
@@ -69,8 +69,9 @@ public class TS_01_Register extends BasePage {
 		Assert.assertTrue(registerPage.isRegisterComplete("Your registration completed"));
 	}
 
-	//@Test
+	@Test
 	public void TC_04_RegisterWithEmailExist() {
+		openUrl(driver, url);
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
 		registerPage.inputToFistNameTextbox(GlobalContants.firtName);
@@ -87,8 +88,9 @@ public class TS_01_Register extends BasePage {
 		Assert.assertTrue(registerPage.isEmailAlreadyExistErrorMessage("The specified email already exists"));
 	}
 
-	//@Test
+	@Test
 	public void TC_05_RegisterWithPasswordLessThan6Characters() {
+		openUrl(driver, url);
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
 		registerPage.inputToFistNameTextbox(GlobalContants.firtName);
@@ -104,12 +106,13 @@ public class TS_01_Register extends BasePage {
 		registerPage.clickToRegisterButton();
 		String message = getTextOfElement(driver, RegisterPageUI.PASSWORD_LESS_6_ERROR_MESSAGE);
 		System.out.println(message);
-		Assert.assertTrue(registerPage.isPasswordLess6PErrorMessage("Password must meet the following rules:"));
-		Assert.assertTrue(registerPage.isPasswordLess6LiErrorMessage("must have at least 6 characters"));
+		Assert.assertTrue(registerPage.isPasswordErrorMessage("Password must meet the following rules:"));
+		Assert.assertTrue(registerPage.isPasswordErrorMessage("must have at least 6 characters"));
 	}
 
-	//@Test
+	@Test
 	public void TC_06_RegisterWithPasswordNotMath() {
+		openUrl(driver, url);
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
 		registerPage.inputToFistNameTextbox(GlobalContants.firtName);

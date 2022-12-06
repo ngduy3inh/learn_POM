@@ -39,6 +39,7 @@ public class LoginPageObejct extends BasePage {
 	public void loginWithAccount(String email, String password) {
 		sendKeysToElement(driver, LoginPageUI.EMAIL_TEXTBOX, email);
 		sendKeysToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
+		clickToLoginButton(); 
 	}
 
 }

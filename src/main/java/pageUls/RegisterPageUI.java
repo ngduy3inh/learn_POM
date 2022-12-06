@@ -19,7 +19,7 @@ public class RegisterPageUI {
 	public static final String FIRT_NAME_ERROR_MESSAGE = "//span[@id='FirstName-error']";
 	public static final String LAST_NAME_ERROR_MESSAGE = "//span[@id='LastName-error']";
 	public static final String EMAIL_ERROR_MESSAGE = "//span[@id='Email-error']";
-	public static final String EMAIL_ALREADY_EXIST_ERROR_MESSAGE = "//li[text()='The specified email already exists']";
+	public static final String EMAIL_ALREADY_EXIST_ERROR_MESSAGE = "//div[@class='message-error validation-summary-errors']";
 	public static final String PASSWORD_ERROR_MESSAGE = "//span[@id='Password-error']";
 	public static final String PASSWORD_LESS_6_ERROR_MESSAGE = "//span[@id='Password-error']";
 	public static final String PASSWORD_LESS_6_P_ERROR_MESSAGE = "//p[text()='Password must meet the following rules: ']";
