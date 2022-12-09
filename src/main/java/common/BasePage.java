@@ -44,7 +44,10 @@ public class BasePage {
 	public WebElement findElement(WebDriver driver, String locator) {
 		return driver.findElement(getByXpath(locator));
 	}
-
+	public List<WebElement> findElements(WebDriver driver, String locator) {
+		return driver.findElements(getByXpath(locator));
+		
+	}
 	public void sendKeysToElement(WebDriver driver, String locator, String valueInput) {
 		findElement(driver, locator).clear();
 		findElement(driver, locator).sendKeys(valueInput);

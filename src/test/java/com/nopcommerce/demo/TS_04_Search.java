@@ -58,7 +58,7 @@ public class TS_04_Search {
 		searchPage.inputToSearchKeywordTextbox("Lenovo");
 		searchPage.clickToSearchButton();
 
-		Assert.assertTrue(searchPage.isVerifyElementsOfKeys(driver, "Lenovo"));
+		Assert.assertTrue(searchPage.isVerifyElementsOfKeys("Lenovo"));
 
 	}
 
@@ -79,7 +79,7 @@ public class TS_04_Search {
 			searchPage.tickToAutomaticallySearchSubCategories();
 			searchPage.clickToSearchButton();
 
-			Assert.assertTrue(searchPage.isVerifyElementsOfKeys(driver, "Apple MacBook"));
+			Assert.assertTrue(searchPage.isVerifyElementsOfKeys("Apple MacBook"));
 
 		} else {
 			searchPage.tickToAdvancedSearchCheckbox();
@@ -87,8 +87,7 @@ public class TS_04_Search {
 			searchPage.tickToAutomaticallySearchSubCategories();
 			searchPage.clickToSearchButton();
 
-			Assert.assertTrue(
-					searchPage.isVerifyElementsOfKeys(driver, "Apple MacBook"));
+			Assert.assertTrue(searchPage.isVerifyElementsOfKeys("Apple MacBook"));
 		}
 	}
 }
