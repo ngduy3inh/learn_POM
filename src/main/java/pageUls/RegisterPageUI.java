@@ -21,9 +21,6 @@ public class RegisterPageUI {
 	public static final String EMAIL_ERROR_MESSAGE = "//span[@id='Email-error']";
 	public static final String EMAIL_ALREADY_EXIST_ERROR_MESSAGE = "//div[@class='message-error validation-summary-errors']";
 	public static final String PASSWORD_ERROR_MESSAGE = "//span[@id='Password-error']";
-	public static final String PASSWORD_LESS_6_ERROR_MESSAGE = "//span[@id='Password-error']";
-	public static final String PASSWORD_LESS_6_P_ERROR_MESSAGE = "//p[text()='Password must meet the following rules: ']";
-	public static final String PASSWORD_LESS_6_LI_ERROR_MESSAGE = "//li[text()='must have at least 6 characters']";
 	public static final String PASSWORD_NOT_MATCH_ERROR_MESSAGE = "//span[@id='ConfirmPassword-error']";
 	public static final String CONFIRM_PASSWORD_ERROR_MESSAGE = "//span[@id='ConfirmPassword-error']";
 	public static final String REGISTER_COMPLETE_TEXT_MESSAGE = "//div[@class='result']";

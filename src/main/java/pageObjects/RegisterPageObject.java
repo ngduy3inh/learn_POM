@@ -1,12 +1,9 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import common.BasePage;
-import pageUls.LoginPageUI;
 import pageUls.RegisterPageUI;
 
 public class RegisterPageObject extends BasePage {
@@ -68,8 +65,6 @@ public class RegisterPageObject extends BasePage {
 		Select object = new Select(findElement(driver, RegisterPageUI.YEAR_DROPDOWN));
 		object.selectByVisibleText(day);
 	}
-	//
-
 /////////////////////////////////////
 	public boolean isFirstNameErrorMessage(String value) {
 		String message = getTextOfElement(driver, RegisterPageUI.FIRT_NAME_ERROR_MESSAGE);

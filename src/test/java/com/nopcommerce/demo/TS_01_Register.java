@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 import common.BasePage;
 import common.GlobalContants;
 import pageObjects.RegisterPageObject;
-import pageUls.RegisterPageUI;
 
 public class TS_01_Register extends BasePage {
 	WebDriver driver;
@@ -104,8 +103,6 @@ public class TS_01_Register extends BasePage {
 		registerPage.inputToConfirmPasswordTextbox(GlobalContants.passwordLessThan6Characters);
 		
 		registerPage.clickToRegisterButton();
-		String message = getTextOfElement(driver, RegisterPageUI.PASSWORD_LESS_6_ERROR_MESSAGE);
-		System.out.println(message);
 		Assert.assertTrue(registerPage.isPasswordErrorMessage("Password must meet the following rules:"));
 		Assert.assertTrue(registerPage.isPasswordErrorMessage("must have at least 6 characters"));
 	}

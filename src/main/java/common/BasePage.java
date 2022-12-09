@@ -50,5 +50,9 @@ public class BasePage {
 	public String getTextOfElement(WebDriver driver, String locator) {
 		return findElement(driver, locator).getText();
 	}
-
+	public String getValue(WebDriver driver, String locator) {
+		WebElement l = findElement(driver, locator);
+		String val = l.getAttribute("value");
+		return val;
+	}
 }
