@@ -76,8 +76,9 @@ public class SearchPageObject extends BasePage {
 		return message.contains(value);
 	}
 
-	public boolean isVerifyElementsOfKeys(WebDriver driver, String locator, String value) {
-		List<WebElement> el = driver.findElements(By.xpath(locator));
+	public boolean isVerifyElementsOfKeys(WebDriver driver, String value) {
+		List<WebElement> el = driver.findElements(By.xpath
+				(SearchPageUI.SEARCH_IN_PRODUCT_DESSCRIPTIONS_CHECKBOX));
 		boolean verify = true;
 		for (WebElement o : el) {
 			if (o.getText().contains(value)) {

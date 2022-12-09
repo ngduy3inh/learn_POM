@@ -41,7 +41,7 @@ public class TS_04_Search {
 	public void TC_01_SearchWithEmtyData() {
 		searchPage.inputToSearchKeywordTextbox("");
 		searchPage.clickToSearchButton();
-		
+
 		Assert.assertTrue(searchPage.isMiniumLengthCharacters("Search term minimum length is 3 characters"));
 	}
 
@@ -49,17 +49,16 @@ public class TS_04_Search {
 	public void TC_02_SearchWithDataExist() {
 		searchPage.inputToSearchKeywordTextbox("Macbook Pro 2040");
 		searchPage.clickToSearchButton();
-		
+
 		Assert.assertTrue(searchPage.isMiniumLengthCharacters("No products were found that matched your criteria."));
 	}
 
 	@Test
 	public void TC_03_SearchWithLenovoKeyword() {
 		searchPage.inputToSearchKeywordTextbox("Lenovo");
-		searchPage.clickToSearchButton();		
+		searchPage.clickToSearchButton();
 
-		Assert.assertTrue(searchPage.isVerifyElementsOfKeys(driver, 
-				SearchPageUI.PRODUCT_TITTLE_TEXT, "Lenovo"));
+		Assert.assertTrue(searchPage.isVerifyElementsOfKeys(driver, "Lenovo"));
 
 	}
 
@@ -75,22 +74,21 @@ public class TS_04_Search {
 	@Test
 	public void TC_05_WithAdvanceSearchSubCategories() {
 		searchPage.inputToSearchKeywordTextbox("Apple Macbook Pro");
-		if(searchPage.isAdvancedSearchChecked() == true) {
+		if (searchPage.isAdvancedSearchChecked() == true) {
 			searchPage.chooseTextOfDropdown("Computers");
 			searchPage.tickToAutomaticallySearchSubCategories();
 			searchPage.clickToSearchButton();
-			
-			Assert.assertTrue(searchPage.isVerifyElementsOfKeys(driver,
-					SearchPageUI.PRODUCT_TITTLE_TEXT, "Apple MacBook"));
 
-		}else {
+			Assert.assertTrue(searchPage.isVerifyElementsOfKeys(driver, "Apple MacBook"));
+
+		} else {
 			searchPage.tickToAdvancedSearchCheckbox();
 			searchPage.chooseTextOfDropdown("Computers");
 			searchPage.tickToAutomaticallySearchSubCategories();
 			searchPage.clickToSearchButton();
-			
-			Assert.assertTrue(searchPage.isVerifyElementsOfKeys(driver,
-					SearchPageUI.PRODUCT_TITTLE_TEXT, "Apple MacBook"));
+
+			Assert.assertTrue(
+					searchPage.isVerifyElementsOfKeys(driver, "Apple MacBook"));
 		}
 	}
 }
