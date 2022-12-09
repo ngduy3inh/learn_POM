@@ -1,5 +1,7 @@
 package com.nopcommerce.demo;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -84,6 +86,7 @@ public class TS_01_Register extends BasePage {
 		registerPage.inputToConfirmPasswordTextbox(GlobalContants.password);
 
 		registerPage.clickToRegisterButton();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		Assert.assertTrue(registerPage.isEmailAlreadyExistErrorMessage("The specified email already exists"));
 	}
 

@@ -1,11 +1,18 @@
 package common;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.text.Element;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 // tai' sd, selenium
 public class BasePage {
+	
+	List<Element> e;
 
 	// getter
 	public static BasePage getBasePage() {
