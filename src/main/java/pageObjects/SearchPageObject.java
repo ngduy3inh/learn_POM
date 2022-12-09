@@ -77,12 +77,16 @@ public class SearchPageObject extends BasePage {
 	}
 
 	public boolean isVerifyElementsOfKeys(WebDriver driver, String locator, String value) {
-		String text = "";
 		List<WebElement> el = driver.findElements(By.xpath(locator));
+		boolean verify = true;
 		for (WebElement o : el) {
-			text = o.getText();
+			if (o.getText().contains(value)) {
+				return verify = true;
+			} else {
+				return verify = false;
+			}
 		}
-		return text.contains(value);
+		return verify;
 	}
 
 }
