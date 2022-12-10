@@ -14,7 +14,6 @@ import pageObjects.LoginPageObejct;
 //test suit tap hop nhieu test case
 public class TS_02_Login extends BaseTest {
 	WebDriver driver;
-	// String projectPath = System.getProperty("user.dir");
 	LoginPageObejct loginPage;
 
 	@Parameters("browser")
@@ -27,7 +26,7 @@ public class TS_02_Login extends BaseTest {
 
 	@AfterClass
 	public void afterClass() {
-		// driver.quit();
+		driver.quit();
 	}
 
 	@Test

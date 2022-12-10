@@ -10,8 +10,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import common.BasePage;
+import common.BaseTest;
 import common.GlobalContants;
 import pageObjects.RegisterPageObject;
+import pageUls.RegisterPageUI;
 
 public class TS_01_Register extends BasePage {
 	WebDriver driver;
@@ -75,7 +77,7 @@ public class TS_01_Register extends BasePage {
 		openUrl(driver, url);
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
-		registerPage.inputToFistNameTextbox(GlobalContants.firtName);
+		registerPage.inputToFistNameTextbox("a");
 		registerPage.inputToLastNameTextbox(GlobalContants.lastName);
 		registerPage.chooseToTextDayDropdown(GlobalContants.day);
 		registerPage.chooseToTextMonthDropdown(GlobalContants.month);
@@ -86,7 +88,7 @@ public class TS_01_Register extends BasePage {
 		registerPage.inputToConfirmPasswordTextbox(GlobalContants.password);
 
 		registerPage.clickToRegisterButton();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		System.out.println(getTextOfElement(driver, RegisterPageUI.EMAIL_ALREADY_EXIST_ERROR_MESSAGE));
 		Assert.assertTrue(registerPage.isEmailAlreadyExistErrorMessage("The specified email already exists"));
 	}
 
