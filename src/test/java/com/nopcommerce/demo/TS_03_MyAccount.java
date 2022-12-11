@@ -80,10 +80,14 @@ public class TS_03_MyAccount {
 		myAccount.inputToFaxNumberAddressTextbox("44-208-1234567");
 		myAccount.clickToSaveAdressButton();
 
-		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo(MyAccountUI.EMAIL_ADDRESS_TEXT, "atm0111@gmail.com"));
-		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo(MyAccountUI.PHONE_ADDRESS_TEXT, "0371234567"));
-		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo(MyAccountUI.FAX_ADDRESS_TEXT, "44-208-1234567"));
-		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo(MyAccountUI.COMPANY_ADDRESS_TEXT, "autotest"));
+		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo
+				(MyAccountUI.EMAIL_ADDRESS_TEXT, "atm0111@gmail.com"));
+		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo
+				(MyAccountUI.PHONE_ADDRESS_TEXT, "0371234567"));
+		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo
+				(MyAccountUI.FAX_ADDRESS_TEXT, "44-208-1234567"));
+		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo
+				(MyAccountUI.COMPANY_ADDRESS_TEXT, "autotest"));
 	}
 
 	@Test

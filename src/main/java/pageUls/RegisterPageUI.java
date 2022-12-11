@@ -20,9 +20,12 @@ public class RegisterPageUI {
 	public static final String FIRT_NAME_ERROR_MESSAGE = "//span[@id='FirstName-error']";
 	public static final String LAST_NAME_ERROR_MESSAGE = "//span[@id='LastName-error']";
 	public static final String EMAIL_ERROR_MESSAGE = "//span[@id='Email-error']";
-	public static final String EMAIL_ALREADY_EXIST_ERROR_MESSAGE = "//div[@class='message-error validation-summary-errors']";
 	public static final String PASSWORD_ERROR_MESSAGE = "//span[@id='Password-error']";
 	public static final String PASSWORD_NOT_MATCH_ERROR_MESSAGE = "//span[@id='ConfirmPassword-error']";
 	public static final String CONFIRM_PASSWORD_ERROR_MESSAGE = "//span[@id='ConfirmPassword-error']";
+	
+	public static final String REQUIRED_ERROR_MESSAGE = "//span[@id='%s-error']";
+	
+	public static final String EMAIL_ALREADY_EXIST_ERROR_MESSAGE = "//div[@class='message-error validation-summary-errors']";
 	public static final String REGISTER_COMPLETE_TEXT_MESSAGE = "//div[@class='result']";
 }

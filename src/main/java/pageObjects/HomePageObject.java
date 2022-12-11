@@ -10,5 +10,7 @@ public class HomePageObject extends BasePage{
 	public HomePageObject(WebDriver driver) {
 		this.driver = driver;
 	}
-
+	public void clickLabelOfMenu(String loc) {
+		clickToElement(driver, null);
+	}
 }

@@ -8,6 +8,7 @@ import pageUls.RegisterPageUI;
 
 public class RegisterPageObject extends BasePage {
 	WebDriver driver;
+	Select object;
 
 	// constructor
 	public RegisterPageObject(WebDriver driver) {
@@ -50,25 +51,24 @@ public class RegisterPageObject extends BasePage {
 	public void clickToRegisterButton() {
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
 	}
-	
+
 	public void clickToLogoutButton() {
 		clickToElement(driver, RegisterPageUI.LOGOUT_BUTTON);
 	}
+////////////
 
-	public void chooseToTextDayDropdown(String day) {
-		Select object = new Select(findElement(driver, RegisterPageUI.DAY_DROPDOWN));
-		object.selectByVisibleText(day);
+	public void enterTextToDayDropdown(String value) {
+		selectDropdownByText(driver, RegisterPageUI.DAY_DROPDOWN, value);
 	}
 
-	public void chooseToTextMonthDropdown(String day) {
-		Select object = new Select(findElement(driver, RegisterPageUI.MONTH_DROPDOWN));
-		object.selectByVisibleText(day);
+	public void enterTextToMonthDropdown(String value) {
+		selectDropdownByText(driver, RegisterPageUI.MONTH_DROPDOWN, value);
 	}
 
-	public void chooseToTextYearDropdown(String day) {
-		Select object = new Select(findElement(driver, RegisterPageUI.YEAR_DROPDOWN));
-		object.selectByVisibleText(day);
+	public void enterTexToYearDropdown(String value) {
+		selectDropdownByText(driver, RegisterPageUI.YEAR_DROPDOWN, value);
 	}
+
 /////////////////////////////////////
 	public boolean isFirstNameErrorMessage(String value) {
 		String message = getTextOfElement(driver, RegisterPageUI.FIRT_NAME_ERROR_MESSAGE);
@@ -90,10 +90,12 @@ public class RegisterPageObject extends BasePage {
 		return message.contains(value);
 	}
 
-	public boolean isConfirmNotMatchErrorMessage(String value) {
-		String message = getTextOfElement(driver, RegisterPageUI.PASSWORD_NOT_MATCH_ERROR_MESSAGE);
+/////dyamic 
+	public boolean isErrorMessage(String nameMessage, String value) {
+		String message = getTextOfElement(driver, RegisterPageUI.REQUIRED_ERROR_MESSAGE, nameMessage);
 		return message.contains(value);
 	}
+
 	public boolean isRegisterComplete(String value) {
 		String message = getTextOfElement(driver, RegisterPageUI.REGISTER_COMPLETE_TEXT_MESSAGE);
 		return message.contains(value);
