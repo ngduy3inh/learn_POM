@@ -14,6 +14,7 @@ public class RegisterPageUI {
 	public static final String PASSSWORD_TEXTBOX = "//input[@id='Password']";
 	public static final String CONFIRM_PASSWORD_TEXTBOX = "//input[@id='ConfirmPassword']";
 	public static final String REGISTER_BUTTON = "//button[@id='register-button']";
+	public static final String LOGOUT_BUTTON = "//a[@class='ico-logout']";
 
 	// message
 	public static final String FIRT_NAME_ERROR_MESSAGE = "//span[@id='FirstName-error']";

@@ -22,7 +22,7 @@ public class WishListPageObject extends BasePage {
 	}
 
 	public boolean isAddedToShoppingCart(String value) {
-		String message = findElement(driver, WishListUI.NOTIFICATION_MESSAGE).getText();
+		String message = getTextOfElement(driver, WishListUI.NOTIFICATION_MESSAGE);
 		return message.contains(value);
 	}
 	public void clickToCloseNotifiCationAdded() {

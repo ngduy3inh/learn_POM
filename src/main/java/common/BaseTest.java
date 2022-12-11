@@ -24,7 +24,7 @@ public class BaseTest {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 		} else if (browserName.equalsIgnoreCase("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
+			WebDriverManager.firefoxdriver().driverVersion("0.31.0").setup();
 			driver = new FirefoxDriver();
 		}else if (browserName.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();

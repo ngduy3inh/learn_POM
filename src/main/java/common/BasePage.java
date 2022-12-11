@@ -1,6 +1,5 @@
 package common;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.text.Element;
@@ -8,11 +7,11 @@ import javax.swing.text.Element;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 // tai' sd, selenium
 public class BasePage {
-	
-	List<Element> e;
+	Select select;
 
 	// getter
 	public static BasePage getBasePage() {
@@ -31,7 +30,7 @@ public class BasePage {
 	public String getCurrentPageUrl(WebDriver driver) {
 		return driver.getCurrentUrl();
 	}
-	
+
 	public void refeshCurrentPage(WebDriver driver) {
 		driver.navigate().refresh();
 	}
@@ -44,10 +43,12 @@ public class BasePage {
 	public WebElement findElement(WebDriver driver, String locator) {
 		return driver.findElement(getByXpath(locator));
 	}
+
 	public List<WebElement> findElements(WebDriver driver, String locator) {
 		return driver.findElements(getByXpath(locator));
-		
+
 	}
+
 	public void sendKeysToElement(WebDriver driver, String locator, String valueInput) {
 		findElement(driver, locator).clear();
 		findElement(driver, locator).sendKeys(valueInput);
@@ -60,9 +61,16 @@ public class BasePage {
 	public String getTextOfElement(WebDriver driver, String locator) {
 		return findElement(driver, locator).getText();
 	}
+
 	public String getValue(WebDriver driver, String locator) {
 		WebElement l = findElement(driver, locator);
 		String val = l.getAttribute("value");
 		return val;
 	}
+
+	// xử lý cho dropdown
+//	public void selectDropdownByText(WebDriver driver, String locator, String textItem) {
+//		select = new Select(getElement(driver, locator));
+//		select.selectByVisibleText(textItem);
+//	}
 }

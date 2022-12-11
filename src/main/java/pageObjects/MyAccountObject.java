@@ -101,10 +101,7 @@ public class MyAccountObject extends BasePage {
 		String message = getTextOfElement(driver, MyAccountUI.FIRT_NAME_INFO_TEXTBOX);
 		return message.contains(value);
 	}
-//	public boolean isNewFirtName(String value) {
-//		String message = getValue(driver, MyAccountUI.FIRT_NAME_INFO_TEXTBOX);
-//		return message.contains(value);
-//	}
+
 	public boolean isNewUpdateInfo(String locator, String value) {
 		String message = getValue(driver, locator);
 		return message.contains(value);

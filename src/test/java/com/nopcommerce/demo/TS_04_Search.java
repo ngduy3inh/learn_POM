@@ -75,6 +75,7 @@ public class TS_04_Search {
 	public void TC_05_WithAdvanceSearchSubCategories() {
 		searchPage.inputToSearchKeywordTextbox("Apple Macbook Pro");
 		if (searchPage.isAdvancedSearchChecked() == true) {
+			System.out.println(searchPage.isAdvancedSearchChecked());
 			searchPage.chooseTextOfDropdown("Computers");
 			searchPage.tickToAutomaticallySearchSubCategories();
 			searchPage.clickToSearchButton();

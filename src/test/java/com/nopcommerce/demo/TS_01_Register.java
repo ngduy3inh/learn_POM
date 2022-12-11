@@ -14,13 +14,15 @@ import common.BaseTest;
 import common.GlobalContants;
 import pageObjects.RegisterPageObject;
 import pageUls.RegisterPageUI;
+import utils.DataFakerUtil;
 
 public class TS_01_Register extends BasePage {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	RegisterPageObject registerPage;
+	DataFakerUtil dataFaker;
 	String url = "https://demo.nopcommerce.com/register?returnUrl=%2F";
-	
+
 	@BeforeClass
 	public void beforeClass() {
 		System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver.exe");
@@ -28,10 +30,11 @@ public class TS_01_Register extends BasePage {
 		driver.get(url);
 		driver.manage().window().maximize();
 		registerPage = new RegisterPageObject(driver);
+		dataFaker = DataFakerUtil.getData();
 	}
 
 	@AfterClass
-	public void afterClass(){
+	public void afterClass() {
 		driver.quit();
 	}
 
@@ -55,11 +58,11 @@ public class TS_01_Register extends BasePage {
 
 	@Test
 	public void TC_03_RegisterWithIfCorrect() {
-
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
-		registerPage.inputToFistNameTextbox(GlobalContants.firtName);
-		registerPage.inputToLastNameTextbox(GlobalContants.lastName);
+		registerPage.inputToFistNameTextbox(dataFaker.getFirstName());
+		registerPage.inputToFistNameTextbox(dataFaker.getFirstName());
+		registerPage.inputToLastNameTextbox(dataFaker.getLastName());
 		registerPage.chooseToTextDayDropdown(GlobalContants.day);
 		registerPage.chooseToTextMonthDropdown(GlobalContants.month);
 		registerPage.chooseToTextYearDropdown(GlobalContants.year);
@@ -70,6 +73,7 @@ public class TS_01_Register extends BasePage {
 
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.isRegisterComplete("Your registration completed"));
+		registerPage.clickToLogoutButton();
 	}
 
 	@Test
@@ -77,8 +81,8 @@ public class TS_01_Register extends BasePage {
 		openUrl(driver, url);
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
-		registerPage.inputToFistNameTextbox("a");
-		registerPage.inputToLastNameTextbox(GlobalContants.lastName);
+		registerPage.inputToFistNameTextbox(dataFaker.getFirstName());
+		registerPage.inputToLastNameTextbox(dataFaker.getLastName());
 		registerPage.chooseToTextDayDropdown(GlobalContants.day);
 		registerPage.chooseToTextMonthDropdown(GlobalContants.month);
 		registerPage.chooseToTextYearDropdown(GlobalContants.year);
@@ -86,7 +90,6 @@ public class TS_01_Register extends BasePage {
 		registerPage.inputToCompanyTextbox(GlobalContants.company);
 		registerPage.inputToPasswordTextbox(GlobalContants.password);
 		registerPage.inputToConfirmPasswordTextbox(GlobalContants.password);
-
 		registerPage.clickToRegisterButton();
 		System.out.println(getTextOfElement(driver, RegisterPageUI.EMAIL_ALREADY_EXIST_ERROR_MESSAGE));
 		Assert.assertTrue(registerPage.isEmailAlreadyExistErrorMessage("The specified email already exists"));
@@ -97,8 +100,8 @@ public class TS_01_Register extends BasePage {
 		openUrl(driver, url);
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
-		registerPage.inputToFistNameTextbox(GlobalContants.firtName);
-		registerPage.inputToLastNameTextbox(GlobalContants.lastName);
+		registerPage.inputToFistNameTextbox(dataFaker.getFirstName());
+		registerPage.inputToLastNameTextbox(dataFaker.getLastName());
 		registerPage.chooseToTextDayDropdown(GlobalContants.day);
 		registerPage.chooseToTextMonthDropdown(GlobalContants.month);
 		registerPage.chooseToTextYearDropdown(GlobalContants.year);
@@ -106,7 +109,7 @@ public class TS_01_Register extends BasePage {
 		registerPage.inputToCompanyTextbox(GlobalContants.company);
 		registerPage.inputToPasswordTextbox(GlobalContants.passwordLessThan6Characters);
 		registerPage.inputToConfirmPasswordTextbox(GlobalContants.passwordLessThan6Characters);
-		
+
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.isPasswordErrorMessage("Password must meet the following rules:"));
 		Assert.assertTrue(registerPage.isPasswordErrorMessage("must have at least 6 characters"));
@@ -117,8 +120,8 @@ public class TS_01_Register extends BasePage {
 		openUrl(driver, url);
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
-		registerPage.inputToFistNameTextbox(GlobalContants.firtName);
-		registerPage.inputToLastNameTextbox(GlobalContants.lastName);
+		registerPage.inputToFistNameTextbox(dataFaker.getFirstName());
+		registerPage.inputToLastNameTextbox(dataFaker.getLastName());
 		registerPage.chooseToTextDayDropdown(GlobalContants.day);
 		registerPage.chooseToTextMonthDropdown(GlobalContants.month);
 		registerPage.chooseToTextYearDropdown(GlobalContants.year);
@@ -126,10 +129,11 @@ public class TS_01_Register extends BasePage {
 		registerPage.inputToCompanyTextbox(GlobalContants.company);
 		registerPage.inputToPasswordTextbox(GlobalContants.password);
 		registerPage.inputToConfirmPasswordTextbox(GlobalContants.passwordLessThan6Characters);
-		
+
 		registerPage.clickToRegisterButton();
-		Assert.assertTrue(registerPage.isConfirmNotMatchErrorMessage("The password and confirmation password do not match."));
-	
+		Assert.assertTrue(
+				registerPage.isConfirmNotMatchErrorMessage("The password and confirmation password do not match."));
+
 	}
 
 }

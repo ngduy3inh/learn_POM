@@ -50,6 +50,10 @@ public class RegisterPageObject extends BasePage {
 	public void clickToRegisterButton() {
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
 	}
+	
+	public void clickToLogoutButton() {
+		clickToElement(driver, RegisterPageUI.LOGOUT_BUTTON);
+	}
 
 	public void chooseToTextDayDropdown(String day) {
 		Select object = new Select(findElement(driver, RegisterPageUI.DAY_DROPDOWN));

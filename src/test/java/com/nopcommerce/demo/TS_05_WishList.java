@@ -42,7 +42,7 @@ public class TS_05_WishList {
 
 	@Test
 	public void TC_01_AddToWishList() {
-		loginPage.loginWithAccount(GlobalContants.RegisteredEmail, GlobalContants.password);
+		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.password);
 		wishList.chooseToMacbook();
 		wishList.clickToAddToWishList();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

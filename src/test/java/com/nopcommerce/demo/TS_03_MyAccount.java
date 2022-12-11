@@ -37,23 +37,23 @@ public class TS_03_MyAccount {
 
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		//driver.quit();
 	}
 
 	@Test
 	public void TC_01_UpdateInfo() {
-		loginPage.loginWithAccount(GlobalContants.RegisteredEmail, GlobalContants.password);
+		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.password);
 		Assert.assertTrue(loginPage.isLoged("My account"));
 		driver.get(urlCustomerInfo);
 		myAccount.inputToFistNameTextbox("Binh1");
 		myAccount.inputToLastNameTextbox("Nguyen 1W");
-		myAccount.inputToEmailTextbox("1binh1@gmail.com");
+		myAccount.inputToEmailTextbox("13binh1@gmail.com");
 		myAccount.inputToCompanyTextbox("E.cc");
 
 		myAccount.clickToSaveButton();
 		Assert.assertTrue(myAccount.isNewUpdateInfo(MyAccountUI.FIRT_NAME_INFO_TEXTBOX, "Binh1"));
 		Assert.assertTrue(myAccount.isNewUpdateInfo(MyAccountUI.LAST_NAME_INF0_TEXTBOX, "Nguyen 1W"));
-		Assert.assertTrue(myAccount.isNewUpdateInfo(MyAccountUI.EMAIL_INFO_TEXTBOX, "1binh1@gmail.com"));
+		Assert.assertTrue(myAccount.isNewUpdateInfo(MyAccountUI.EMAIL_INFO_TEXTBOX, "13binh1@gmail.com"));
 		Assert.assertTrue(myAccount.isNewUpdateInfo(MyAccountUI.COMPANY_INFO_TEXTBOX, "E.cc"));
 	}
 
@@ -68,7 +68,7 @@ public class TS_03_MyAccount {
 
 		myAccount.inputToFirstNameAddressTextbox("Binh");
 		myAccount.inputToLastNameAddressTextbox("Huynh");
-		myAccount.inputToEmailAddressTextbox("atm0111@gmail.com");
+		myAccount.inputToEmailAddressTextbox("atm0q111@gmail.com");
 		myAccount.inputToCompanyAddressTextbox("autotest");
 		myAccount.chooseToTextCountryAddressDropdown("Viet Nam");
 		myAccount.chooseToTextStateOrProvinceAddressDropdown("Other");

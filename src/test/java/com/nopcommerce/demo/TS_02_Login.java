@@ -18,10 +18,9 @@ public class TS_02_Login extends BaseTest {
 
 	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass() {
-		driver = getBrowserDriver("chrome", "https://demo.nopcommerce.com/login?returnUrl=%2F");
+	public void beforeClass(String browserName) {
+		driver = getBrowserDriver(browserName, "https://demo.nopcommerce.com/login?returnUrl=%2F");
 		loginPage = new LoginPageObejct(driver);
-
 	}
 
 	@AfterClass
@@ -56,7 +55,7 @@ public class TS_02_Login extends BaseTest {
 
 	@Test
 	public void TC_04_LoginWithRegisteredEmailAndPasswordEmpty() {
-		loginPage.loginWithAccount(GlobalContants.RegisteredEmail, "");
+		loginPage.loginWithAccount(GlobalContants.email, "");
 		Assert.assertTrue(
 				loginPage.isLoginErrorMessage("Login was unsuccessful. Please correct the errors and try again."));
 		Assert.assertTrue(loginPage.isLoginErrorMessage("The credentials provided are incorrect"));
@@ -64,7 +63,7 @@ public class TS_02_Login extends BaseTest {
 
 	@Test
 	public void TC_05_LoginWithRegisteredEmailAndInvalidPassword() {
-		loginPage.loginWithAccount(GlobalContants.RegisteredEmail, GlobalContants.invalidPassword);
+		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.invalidPassword);
 		Assert.assertTrue(
 				loginPage.isLoginErrorMessage("Login was unsuccessful. Please correct the errors and try again."));
 		Assert.assertTrue(loginPage.isLoginErrorMessage("The credentials provided are incorrect"));
@@ -72,7 +71,7 @@ public class TS_02_Login extends BaseTest {
 
 	@Test
 	public void TC_06_LoginWithValidAccount() {
-		loginPage.loginWithAccount(GlobalContants.RegisteredEmail, GlobalContants.password);
+		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.password);
 		Assert.assertTrue(loginPage.isLoged("My account"));
 	}
 }

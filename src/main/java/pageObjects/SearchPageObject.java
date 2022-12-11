@@ -30,16 +30,10 @@ public class SearchPageObject extends BasePage {
 		return message.contains(value);
 	}
 
-//	public String getTextOfListElement() {
-//		List<WebElement> list = driver.findElements(SearchPageUI.PRODUCT_TITTLE_TEXT);
-//		return null;
-//		
-//	}
 	public boolean isAdvancedSearchChecked() {
 		WebElement e = findElement(driver, SearchPageUI.ADVENCED_SEARCH_CHECKBOX);
 		boolean checked = e.isSelected();
-		return true;
-
+		return checked;
 	}
 
 	public void tickToAdvancedSearchCheckbox() {
@@ -66,7 +60,7 @@ public class SearchPageObject extends BasePage {
 	}
 
 	public boolean isNotProduct(String value) {
-		String message = findElement(driver, SearchPageUI.SEARCH_RESULTS_MESSAGE).getText();
+		String message = getTextOfElement(driver, SearchPageUI.SEARCH_RESULTS_MESSAGE);
 		return message.contains(value);
 
 	}
