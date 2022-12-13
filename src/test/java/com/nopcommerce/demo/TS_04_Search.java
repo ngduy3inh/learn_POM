@@ -58,7 +58,7 @@ public class TS_04_Search {
 		searchPage.inputToSearchKeywordTextbox("Lenovo");
 		searchPage.clickToSearchButton();
 
-		Assert.assertTrue(searchPage.isVerifyElementsOfKeys("Lenovo"));
+		Assert.assertTrue(searchPage.isVerifyKeysOfElements("Lenovo"));
 
 	}
 
@@ -66,9 +66,10 @@ public class TS_04_Search {
 	public void TC_04_AdvanceSearchWithParentCategories() {
 		searchPage.inputToSearchKeywordTextbox("Apple Macbook Pro");
 		searchPage.tickToAdvancedSearchCheckbox();
-		searchPage.chooseTextOfDropdown("Computers");
+		searchPage.enterTextToCategoryDropdown("Computers");
 		searchPage.clickToSearchButton();
-		Assert.assertTrue(searchPage.isNotProduct("No products were found that matched your criteria."));
+		Assert.assertTrue(searchPage.isNotProduct
+				("No products were found that matched your criteria."));
 	}
 
 	@Test
@@ -76,19 +77,13 @@ public class TS_04_Search {
 		searchPage.inputToSearchKeywordTextbox("Apple Macbook Pro");
 		if (searchPage.isAdvancedSearchChecked() == true) {
 			System.out.println(searchPage.isAdvancedSearchChecked());
-			searchPage.chooseTextOfDropdown("Computers");
-			searchPage.tickToAutomaticallySearchSubCategories();
-			searchPage.clickToSearchButton();
-
-			Assert.assertTrue(searchPage.isVerifyElementsOfKeys("Apple MacBook"));
-
 		} else {
 			searchPage.tickToAdvancedSearchCheckbox();
-			searchPage.chooseTextOfDropdown("Computers");
-			searchPage.tickToAutomaticallySearchSubCategories();
-			searchPage.clickToSearchButton();
-
-			Assert.assertTrue(searchPage.isVerifyElementsOfKeys("Apple MacBook"));
 		}
+		searchPage.enterTextToCategoryDropdown("Computers");
+		searchPage.tickToAutomaticallySearchSubCategories();//
+		searchPage.clickToSearchButton();
+
+		Assert.assertTrue(searchPage.isVerifyKeysOfElements("Apple MacBook"));//
 	}
 }

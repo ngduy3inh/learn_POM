@@ -1,15 +1,14 @@
 package pageObjects;
 
-import org.apache.poi.ss.usermodel.ClientAnchor;
 import org.openqa.selenium.WebDriver;
 
-import common.BasePage;
 import pageUls.WishListUI;
 
-public class WishListPageObject extends BasePage {
+public class WishListPageObject extends SearchPageObject {
 	WebDriver driver;
 
 	public WishListPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
@@ -60,9 +59,7 @@ public class WishListPageObject extends BasePage {
 		return message.contains(value);
 	}
 	
-	public boolean verify() {
-		
-		return false;
-		
-	}
+//	public void hoverToElementOfTopMenu() {
+//		hoverToElement(driver, HeaderPageUI.TOP_MENU_ELECTRO);
+//	}
 }

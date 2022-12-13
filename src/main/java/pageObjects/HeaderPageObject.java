@@ -13,4 +13,7 @@ public class HeaderPageObject extends BasePage {
 	public void clickToLabelOfMenu(String nameLabel) {
 		clickToElement(driver, HeaderPageUI.MENU_LABEL, nameLabel);
 	}
+	public void hoverToElementOfTopMenu() {
+		hoverToElement(driver, HeaderPageUI.TOP_MENU_ELECTRO);
+	}
 }

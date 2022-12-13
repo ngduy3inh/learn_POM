@@ -37,6 +37,11 @@ public class LoginPageObejct extends BasePage {
 		String message = getTextOfElement(driver, LoginPageUI.MY_ACCOUNT_LINK);
 		return message.contains(value);
 	}
+	
+	public boolean isHomePage(String value) {
+		String message = getCurrentPageUrl(driver);
+		return message.contains(value);
+	}
 
 	public void loginWithAccount(String email, String password) {
 		sendKeysToElement(driver, LoginPageUI.EMAIL_TEXTBOX, email);

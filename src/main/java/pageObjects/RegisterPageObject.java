@@ -3,17 +3,16 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import common.BasePage;
 import pageUls.RegisterPageUI;
 
-public class RegisterPageObject extends BasePage {
+public class RegisterPageObject extends HeaderPageObject {
 	WebDriver driver;
-	Select object;
-
 	// constructor
 	public RegisterPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
+	
 
 /////////////////////////////////////
 	public void clickToMaleRadioButton() {
@@ -51,10 +50,6 @@ public class RegisterPageObject extends BasePage {
 	public void clickToRegisterButton() {
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
 	}
-
-	public void clickToLogoutButton() {
-		clickToElement(driver, RegisterPageUI.LOGOUT_BUTTON);
-	}
 ////////////
 
 	public void enterTextToDayDropdown(String value) {
@@ -70,32 +65,32 @@ public class RegisterPageObject extends BasePage {
 	}
 
 /////////////////////////////////////
-	public boolean isFirstNameErrorMessage(String value) {
-		String message = getTextOfElement(driver, RegisterPageUI.FIRT_NAME_ERROR_MESSAGE);
-		return message.equals(value);
-	}
-
-	public boolean isLastNameErrorMessage(String value) {
-		String message = getTextOfElement(driver, RegisterPageUI.LAST_NAME_ERROR_MESSAGE);
-		return message.equals(value);
-	}
-
-	public boolean isEmailErrorMessage(String value) {
-		String message = getTextOfElement(driver, RegisterPageUI.EMAIL_ERROR_MESSAGE);
-		return message.equals(value);
-	}
-
-	public boolean isPasswordErrorMessage(String value) {
-		String message = getTextOfElement(driver, RegisterPageUI.PASSWORD_ERROR_MESSAGE);
-		return message.contains(value);
-	}
+//	public boolean isFirstNameErrorMessage(String value) {
+//		String message = getTextOfElement(driver, RegisterPageUI.FIRT_NAME_ERROR_MESSAGE);
+//		return message.equals(value);
+//	}
+//
+//	public boolean isLastNameErrorMessage(String value) {
+//		String message = getTextOfElement(driver, RegisterPageUI.LAST_NAME_ERROR_MESSAGE);
+//		return message.equals(value);
+//	}
+//
+//	public boolean isEmailErrorMessage(String value) {
+//		String message = getTextOfElement(driver, RegisterPageUI.EMAIL_ERROR_MESSAGE);
+//		return message.equals(value);
+//	}
+//
+//	public boolean isPasswordErrorMessage(String value) {
+//		String message = getTextOfElement(driver, RegisterPageUI.PASSWORD_ERROR_MESSAGE);
+//		return message.contains(value);
+//	}
 
 /////dyamic 
 	public boolean isErrorMessage(String nameMessage, String value) {
 		String message = getTextOfElement(driver, RegisterPageUI.REQUIRED_ERROR_MESSAGE, nameMessage);
 		return message.contains(value);
 	}
-
+////
 	public boolean isRegisterComplete(String value) {
 		String message = getTextOfElement(driver, RegisterPageUI.REGISTER_COMPLETE_TEXT_MESSAGE);
 		return message.contains(value);

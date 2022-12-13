@@ -48,30 +48,32 @@ public class TS_02_Login extends BaseTest {
 		loginPage.refeshCurrentPage(driver);
 		loginPage.inputToEmailTextbox(GlobalContants.unregisteredEmail);
 		loginPage.clickToLoginButton();
-		Assert.assertTrue(
-				loginPage.isLoginErrorMessage("Login was unsuccessful. Please correct the errors and try again."));
+		Assert.assertTrue(loginPage.isLoginErrorMessage
+				("Login was unsuccessful. Please correct the errors and try again."));
 		Assert.assertTrue(loginPage.isLoginErrorMessage("No customer account found"));
 	}
 
 	@Test
 	public void TC_04_LoginWithRegisteredEmailAndPasswordEmpty() {
 		loginPage.loginWithAccount(GlobalContants.email, "");
-		Assert.assertTrue(
-				loginPage.isLoginErrorMessage("Login was unsuccessful. Please correct the errors and try again."));
+		Assert.assertTrue(loginPage.isLoginErrorMessage
+				("Login was unsuccessful. Please correct the errors and try again."));
 		Assert.assertTrue(loginPage.isLoginErrorMessage("The credentials provided are incorrect"));
 	}
 
 	@Test
 	public void TC_05_LoginWithRegisteredEmailAndInvalidPassword() {
 		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.invalidPassword);
-		Assert.assertTrue(
-				loginPage.isLoginErrorMessage("Login was unsuccessful. Please correct the errors and try again."));
-		Assert.assertTrue(loginPage.isLoginErrorMessage("The credentials provided are incorrect"));
+		Assert.assertTrue(loginPage.isLoginErrorMessage
+				("Login was unsuccessful. Please correct the errors and try again."));
+		Assert.assertTrue(loginPage.isLoginErrorMessage
+				("The credentials provided are incorrect"));
 	}
 
 	@Test
 	public void TC_06_LoginWithValidAccount() {
 		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.password);
+		Assert.assertTrue(loginPage.isHomePage("https://demo.nopcommerce.com/"));
 		Assert.assertTrue(loginPage.isLoged("My account"));
 	}
 }

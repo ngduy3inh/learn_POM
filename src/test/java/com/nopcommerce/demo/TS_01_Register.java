@@ -9,20 +9,17 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import common.BasePage;
 import common.BaseTest;
 import common.GlobalContants;
-import pageObjects.HeaderPageObject;
 import pageObjects.RegisterPageObject;
-import pageUls.RegisterPageUI;
 import utils.DataFakerUtil;
 
-public class TS_01_Register extends BasePage {
+public class TS_01_Register  {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	RegisterPageObject registerPage;
 	DataFakerUtil dataFaker;
-	HeaderPageObject headerPage;
+	//HeaderPageObject headerPage;
 	String url = "https://demo.nopcommerce.com/register?returnUrl=%2F";
 
 	@BeforeClass
@@ -33,7 +30,7 @@ public class TS_01_Register extends BasePage {
 		driver.manage().window().maximize();
 		registerPage = new RegisterPageObject(driver);
 		dataFaker = DataFakerUtil.getData();
-		headerPage = new HeaderPageObject(driver);
+		//headerPage = new HeaderPageObject(driver);
 	}
 
 	@AfterClass
@@ -64,7 +61,7 @@ public class TS_01_Register extends BasePage {
 		registerPage.inputToEmailTextbox(GlobalContants.wrongEmail);
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.isErrorMessage("Email", "Wrong email"));
-		Assert.assertTrue(registerPage.isEmailErrorMessage("Wrong email"));
+//		Assert.assertTrue(registerPage.isEmailErrorMessage("Wrong email"));
 	}
 
 	@Test
@@ -83,13 +80,13 @@ public class TS_01_Register extends BasePage {
 
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.isRegisterComplete("Your registration completed"));
-		headerPage.clickToLabelOfMenu("logout");
+		registerPage.clickToLabelOfMenu("logout");
 		BaseTest.sleepInSeconds(2);
 	}
 
 	@Test
 	public void TC_04_RegisterWithEmailExist() {
-		headerPage.clickToLabelOfMenu("register");
+		registerPage.clickToLabelOfMenu("register");
 
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
@@ -110,7 +107,7 @@ public class TS_01_Register extends BasePage {
 
 	@Test
 	public void TC_05_RegisterWithPasswordLessThan6Characters() {
-		headerPage.clickToLabelOfMenu("register");
+		registerPage.clickToLabelOfMenu("register");
 		
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
@@ -136,7 +133,7 @@ public class TS_01_Register extends BasePage {
 
 	@Test
 	public void TC_06_RegisterWithPasswordNotMath() {
-		headerPage.clickToLabelOfMenu("register");
+		registerPage.clickToLabelOfMenu("register");
 		registerPage.refeshCurrentPage(driver);
 		registerPage.clickToMaleRadioButton();
 		registerPage.inputToFistNameTextbox(dataFaker.getFirstName());

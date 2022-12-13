@@ -2,18 +2,17 @@ package pageObjects;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-import common.BasePage;
+import pageUls.RegisterPageUI;
 import pageUls.SearchPageUI;
 
-public class SearchPageObject extends BasePage {
+public class SearchPageObject extends HeaderPageObject {
 	WebDriver driver;
 
 	public SearchPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
@@ -39,11 +38,19 @@ public class SearchPageObject extends BasePage {
 	public void tickToAdvancedSearchCheckbox() {
 		clickToElement(driver, SearchPageUI.ADVENCED_SEARCH_CHECKBOX);
 	}
-
-	public void chooseTextOfDropdown(String value) {
-		Select select = new Select(findElement(driver, SearchPageUI.CATEGORY_DROPBOX));
-		select.selectByVisibleText(value);
+	//
+	public void enterTextToCategoryDropdown(String value) {
+		selectDropdownByText(driver, SearchPageUI.CATEGORY_DROPBOX, value);
 	}
+	
+	public void enterTextToManufacturerDropdown(String value) {
+		selectDropdownByText(driver, RegisterPageUI.DAY_DROPDOWN, value);
+	}
+	
+//	public void chooseTextOfDropdown(String value) {
+//		Select select = new Select(findElement(driver, SearchPageUI.CATEGORY_DROPBOX));
+//		select.selectByVisibleText(value);
+//	}
 
 	public void tickToAutomaticallySearchSubCategories() {
 		clickToElement(driver, SearchPageUI.AUTOMATICALLY_SEARCH_CHECKBOX);
@@ -70,7 +77,7 @@ public class SearchPageObject extends BasePage {
 		return message.contains(value);
 	}
 
-	public boolean isVerifyElementsOfKeys(String value) {
+	public boolean isVerifyKeysOfElements(String value) {
 		List<WebElement> el = findElements(driver, SearchPageUI.PRODUCT_TITTLE_TEXT);
 		boolean verify = true;
 		for (WebElement o : el) {

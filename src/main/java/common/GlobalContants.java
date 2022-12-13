@@ -3,7 +3,7 @@ package common;
 public class GlobalContants {
 	public static final String firtName = "autom";
 	public static final String lastName = "web";
-	public static final String email = "9323e1a332s@gmail.com";
+	public static final String email = "binh@gmail.com";
 	public static final String wrongEmail = "autoweb4";
 	public static final String unregisteredEmail = "UnregisteredEmail@gmail.com";
 	public static final String company = "autoweb";

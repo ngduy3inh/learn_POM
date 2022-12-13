@@ -97,20 +97,32 @@ public class MyAccountObject extends BasePage {
 		Select object = new Select(findElement(driver, RegisterPageUI.YEAR_DROPDOWN));
 		object.selectByVisibleText(year);
 	}
+/////////////
 	public boolean isUpdated(String value) {
 		String message = getTextOfElement(driver, MyAccountUI.FIRT_NAME_INFO_TEXTBOX);
 		return message.contains(value);
 	}
-
-	public boolean isNewUpdateInfo(String locator, String value) {
-		String message = getValue(driver, locator);
+	
+	public boolean isNewValueUpdateInfo(String nameTextbox, String value) {
+		String message = getAttributeValue
+				(driver, MyAccountUI.UPDATE_INFO_TEXTBOX, "value" , nameTextbox);
 		return message.contains(value);
 	}
+	
+	public boolean isNewUpdateInfo(String nameAttribute, String nameTextbox, String value) {
+		String message = getAttributeValue
+				(driver, MyAccountUI.UPDATE_INFO_TEXTBOX, nameAttribute , nameTextbox);
+		return message.contains(value);
+	}
+
 	public boolean isNewUpdateAdrressInfo(String locator, String value) {
 		String message = getTextOfElement(driver, locator);
 		return message.contains(value);
 	}
-
+	public boolean isUpdatedAdrressInfo(String name, String value) {
+		String message = getTextOfElement(driver, MyAccountUI.UPDATED_ADDRESS_INFO, name);
+		return message.contains(value);
+	}
 /////////////////////Address/////////////////////
 	public void clickToSaveAdressButton() {
 		clickToElement(driver, MyAccountUI.SAVE_ADDRESS_BUTTON);
@@ -123,7 +135,7 @@ public class MyAccountObject extends BasePage {
 	public void clickToAddNewButton() {
 		clickToElement(driver, MyAccountUI.ADD_NEW_BUTTON);
 	}
-
+/////////////
 	public void inputToFirstNameAddressTextbox(String firtName) {
 		sendKeysToElement(driver, MyAccountUI.FIRST_NAME_ADDRESS_TEXTBOX, firtName);
 	}
@@ -134,20 +146,6 @@ public class MyAccountObject extends BasePage {
 
 	public void inputToEmailAddressTextbox(String email) {
 		sendKeysToElement(driver, MyAccountUI.EMAIL_TEXTBOX, email);
-	}
-
-	public void inputToCompanyAddressTextbox(String company) {
-		sendKeysToElement(driver, MyAccountUI.COMPANY_TEXTBOX, company);
-	}
-
-	public void chooseToTextCountryAddressDropdown(String country) {
-		Select object = new Select(findElement(driver, MyAccountUI.COUNTRY_DROPDOWN));
-		object.selectByVisibleText(country);
-	}
-
-	public void chooseToTextStateOrProvinceAddressDropdown(String stateOrProvince) {
-		Select object = new Select(findElement(driver, MyAccountUI.STATE_OR_PROVINCE_DROPDOWN));
-		object.selectByVisibleText(stateOrProvince);
 	}
 
 	public void inputToCityAddressTextbox(String city) {
@@ -174,10 +172,27 @@ public class MyAccountObject extends BasePage {
 		sendKeysToElement(driver, MyAccountUI.FAX_NUMBER_TEXTBOX, faxNumber);
 	}
 
+	public void inputToCompanyAddressTextbox(String company) {
+		sendKeysToElement(driver, MyAccountUI.COMPANY_TEXTBOX, company);
+	}
+	
+	public void inputToUpdateInfoAddressTextbox(String nameTextbox, String value) {
+		sendKeysToElement(driver, MyAccountUI.UPDATE_INFO_ADDRESS_TEXTBOX, value, nameTextbox);
+	}
+////////////
+	public void enterTextToCountryDropdown(String value) {
+		selectDropdownByText(driver, MyAccountUI.COUNTRY_DROPDOWN, value);
+	}
+
+	public void enterTextToStateOrProvinceDropdown(String value) {
+		selectDropdownByText(driver, MyAccountUI.STATE_OR_PROVINCE_DROPDOWN, value);
+	}
+
 /////////////////////Change password/////////////////////
 	public void clickToChangePasswordTab() {
 		clickToElement(driver, MyAccountUI.CHANGE_PASSWORD_TAB);
 	}
+
 	public void inputToOldPassWordTextbox(String oldPassword) {
 		sendKeysToElement(driver, MyAccountUI.OLD_PASSWORD_TEXTBOX, oldPassword);
 	}
@@ -193,10 +208,11 @@ public class MyAccountObject extends BasePage {
 	public void clickToChangePasswordButton() {
 		clickToElement(driver, MyAccountUI.CHANGE_PASSWORD_BUTTON);
 	}
+
 	public boolean isPassaWordChanged(String value) {
 		String message = getTextOfElement(driver, MyAccountUI.PASSOWRD_CHANGED_NOTIFICATION);
 		return message.contains(value);
-		
+
 	}
 
 }

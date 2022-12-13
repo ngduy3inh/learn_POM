@@ -9,11 +9,13 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import common.BaseTest;
 import common.GlobalContants;
 import pageObjects.LoginPageObejct;
 import pageObjects.MyAccountObject;
 import pageObjects.RegisterPageObject;
 import pageUls.MyAccountUI;
+import utils.DataFakerUtil;
 
 public class TS_03_MyAccount {
 	WebDriver driver;
@@ -46,54 +48,70 @@ public class TS_03_MyAccount {
 		Assert.assertTrue(loginPage.isLoged("My account"));
 		driver.get(urlCustomerInfo);
 		myAccount.inputToFistNameTextbox("Binh1");
-		myAccount.inputToLastNameTextbox("Nguyen 1W");
-		myAccount.inputToEmailTextbox("13binh1@gmail.com");
-		myAccount.inputToCompanyTextbox("E.cc");
-
+		myAccount.inputToLastNameTextbox("Nguyen");
+		myAccount.inputToEmailTextbox("binh@gmail.com");
+		myAccount.inputToCompanyTextbox("E");
 		myAccount.clickToSaveButton();
-		Assert.assertTrue(myAccount.isNewUpdateInfo(MyAccountUI.FIRT_NAME_INFO_TEXTBOX, "Binh1"));
-		Assert.assertTrue(myAccount.isNewUpdateInfo(MyAccountUI.LAST_NAME_INF0_TEXTBOX, "Nguyen 1W"));
-		Assert.assertTrue(myAccount.isNewUpdateInfo(MyAccountUI.EMAIL_INFO_TEXTBOX, "13binh1@gmail.com"));
-		Assert.assertTrue(myAccount.isNewUpdateInfo(MyAccountUI.COMPANY_INFO_TEXTBOX, "E.cc"));
+		
+		Assert.assertTrue(myAccount.isNewValueUpdateInfo("FirstName", "Binh1"));
+		Assert.assertTrue(myAccount.isNewValueUpdateInfo("LastName", "Nguyen"));
+		Assert.assertTrue(myAccount.isNewValueUpdateInfo("Email", "binh@gmail.com"));
+		Assert.assertTrue(myAccount.isNewValueUpdateInfo("Company", "E"));
+		
 	}
 
 	@Test
 	public void TC_02_AddAdress() {
-		driver.get(urlCustomerInfo);
-		loginPage.refeshCurrentPage(driver);
-		Assert.assertTrue(loginPage.isLoged("My account"));
-
 		myAccount.clickToAddressTab();
 		myAccount.clickToAddNewButton();
 
-		myAccount.inputToFirstNameAddressTextbox("Binh");
-		myAccount.inputToLastNameAddressTextbox("Huynh");
-		myAccount.inputToEmailAddressTextbox("atm0q111@gmail.com");
-		myAccount.inputToCompanyAddressTextbox("autotest");
-		myAccount.chooseToTextCountryAddressDropdown("Viet Nam");
-		myAccount.chooseToTextStateOrProvinceAddressDropdown("Other");
-		myAccount.inputToCityAddressTextbox("My Tho");
-		myAccount.inputToAddress1Textbox("879c");
-		myAccount.inputToAddress2Textbox("home");
-		myAccount.inputToZipCodeOrPortalCodeAddressTextbox("87000");
-		myAccount.inputToPhoneNumberAddressTextbox("0371234567");
-		myAccount.inputToFaxNumberAddressTextbox("44-208-1234567");
+		myAccount.inputToUpdateInfoAddressTextbox("FirstName","abc");
+		myAccount.inputToUpdateInfoAddressTextbox("LastName","def");
+		myAccount.inputToUpdateInfoAddressTextbox("Email","def@gmail.com");
+		myAccount.inputToUpdateInfoAddressTextbox("PhoneNumber","0371234567");
+		myAccount.inputToUpdateInfoAddressTextbox("FaxNumber","123-22222");
+		myAccount.inputToUpdateInfoAddressTextbox("Company","A");
+		myAccount.inputToUpdateInfoAddressTextbox("Address1","a1");
+		myAccount.inputToUpdateInfoAddressTextbox("Address2","a2");
+		myAccount.inputToUpdateInfoAddressTextbox("ZipPostalCode","87000");
+		myAccount.inputToUpdateInfoAddressTextbox("City","My Tho");
+		myAccount.enterTextToCountryDropdown("Viet Nam");
+		BaseTest.sleepInSeconds(4);
 		myAccount.clickToSaveAdressButton();
+		
+//		myAccount.inputToLastNameAddressTextbox("Huynh");
+//		myAccount.inputToEmailAddressTextbox("atm@gmail.com");
+//		myAccount.inputToCompanyAddressTextbox("autotest");
+//		myAccount.enterTextToCountryDropdown("Viet Nam");
+//		myAccount.enterTextToStateOrProvinceDropdown("Other");
+//		myAccount.inputToCityAddressTextbox("My Tho");
+//		myAccount.inputToAddress1Textbox("879c");
+//		myAccount.inputToAddress2Textbox("home");
+//		myAccount.inputToZipCodeOrPortalCodeAddressTextbox("87000");
+//		myAccount.inputToPhoneNumberAddressTextbox("0371234567");
+//		myAccount.inputToFaxNumberAddressTextbox("44-208-1234567");
+		
+		//Assert.assertTrue(myAccount.isNewUpdateAdrressInfo("email", "def@gmail.com"));
+//		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo("phone", "0371234567"));
+//		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo("fax", "123-22222"));
+//		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo("company", "A"));
+//		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo("address1", "a1"));
+//		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo("address2", "a2"));
+//		//Assert.assertTrue(myAccount.isNewUpdateAdrressInfo("city-state-zip", "My Tho 87000"));
+//		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo("country", "Viet Nam"));
 
-		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo
-				(MyAccountUI.EMAIL_ADDRESS_TEXT, "atm0111@gmail.com"));
 		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo
 				(MyAccountUI.PHONE_ADDRESS_TEXT, "0371234567"));
-		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo
-				(MyAccountUI.FAX_ADDRESS_TEXT, "44-208-1234567"));
-		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo
-				(MyAccountUI.COMPANY_ADDRESS_TEXT, "autotest"));
+//		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo
+//				(MyAccountUI.FAX_ADDRESS_TEXT, "123-22222"));
+//		Assert.assertTrue(myAccount.isNewUpdateAdrressInfo
+//				(MyAccountUI.COMPANY_ADDRESS_TEXT, "A"));
 	}
 
-	@Test
+	//@Test
 	public void TC_03_UpdatePassword() {
-		driver.get(urlCustomerInfo);
-		Assert.assertTrue(loginPage.isLoged("My account"));
+		//driver.get(urlCustomerInfo);
+		//Assert.assertTrue(loginPage.isLoged("My account"));
 		myAccount.clickToChangePasswordTab();
 
 		myAccount.inputToOldPassWordTextbox(GlobalContants.password);

@@ -26,10 +26,10 @@ public class BaseTest {
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().driverVersion("0.31.0").setup();
 			driver = new FirefoxDriver();
-		}else if (browserName.equalsIgnoreCase("edge")) {
+		} else if (browserName.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
-		}else if (browserName.equalsIgnoreCase("chromeheadless")) {
+		} else if (browserName.equalsIgnoreCase("chromeheadless")) {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("headless");
@@ -49,5 +49,9 @@ public class BaseTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public WebDriver getDriver() {
+		return driver;
 	}
 }

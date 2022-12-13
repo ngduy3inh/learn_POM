@@ -31,7 +31,7 @@ public class ShoppingCartPageObject extends BasePage {
 	}
 	
 	public boolean isUpdatedQuantityMacbook(String value) {
-		String message = getTextOfElement(driver, ShoppingCartUI.QUANTITY_MACBOOK_TEXTBOX);
+		String message = getAttributeValue(driver, ShoppingCartUI.QUANTITY_MACBOOK_TEXTBOX, "value");
 		return message.contains(value);
 	}
 	

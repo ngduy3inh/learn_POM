@@ -2,17 +2,19 @@ package com.nopcommerce.demo;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import common.BasePage;
 import common.GlobalContants;
 import pageObjects.LoginPageObejct;
 import pageObjects.ShoppingCartPageObject;
 import pageObjects.WishListPageObject;
 import pageUls.ShoppingCartUI;
 
-public class TS_06_ShoppingCart {
+public class TS_06_ShoppingCart extends BasePage{
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	String urlLogin = "https://demo.nopcommerce.com/login?returnUrl=%2F";
@@ -42,13 +44,14 @@ public class TS_06_ShoppingCart {
 		shoppingCart.clickToShoppingCartLabel();
 		shoppingCart.inputQuantity("5");
 		shoppingCart.clickToUpdateShoppingCartButton();
-		shoppingCart.isUpdatedQuantityMacbook("5");
+		Assert.assertTrue(shoppingCart.isUpdatedQuantityMacbook("5"));
 	}
 
 	@Test
 	void TC_02_RemoveFromCart() {
 		shoppingCart.clickToShoppingCartLabel();
 		shoppingCart.clickToRemoveProductMacbook();
-		shoppingCart.isShoppingCartEmpty("Your Shopping Cart is empty! ");
+		System.out.println(getTextOfElement(driver, ShoppingCartUI.SHOPPING_CART_EMPTY_MESSAGE));
+		Assert.assertTrue(shoppingCart.isShoppingCartEmpty("Your Shopping Cart is empty!"));
 	}
 }

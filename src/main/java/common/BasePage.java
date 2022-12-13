@@ -2,16 +2,17 @@ package common;
 
 import java.util.List;
 
-import javax.swing.text.Element;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 // tai' sd, selenium
 public class BasePage {
 	private Select select;
+	private WebElement el;
+	private Actions action;
 
 	// getter
 	public static BasePage getBasePage() {
@@ -38,7 +39,9 @@ public class BasePage {
 	public WebElement getElement(WebDriver driver, String locator) {
 		return findElement(driver, locator);
 	}
-
+	public WebElement getElement(WebDriver driver, String locator,String...params) {
+		return findElement(driver, locator, params);
+	}
 	//////////////////////
 	public By getByXpath(String locator) {
 		return By.xpath(locator);
@@ -73,15 +76,30 @@ public class BasePage {
 
 ////getValue
 	public String getValue(WebDriver driver, String locator) {
-		WebElement l = findElement(driver, locator);
-		String val = l.getAttribute("value");
+		el = findElement(driver, locator);
+		String val = el.getAttribute("value");
 		return val;
 	}
+	
+	public String getAttributeValue(WebDriver driver, String locator, String attributeName) {
+		return getElement(driver, locator).getAttribute(attributeName);
+	}
+	public String getAttributeValue(WebDriver driver, String locator, String attributeName, String...params) {
+		return getElement(driver, locator, params).getAttribute(attributeName);
+	}
 
+//	public String getAttributeValue(WebDriver driver, String locator, String attributeName,String...params) {
+//		return getElement(driver, locator).getAttribute(attributeName);
+//	}
 ////sendkey
 	public void sendKeysToElement(WebDriver driver, String locator, String valueInput) {
 		findElement(driver, locator).clear();
 		findElement(driver, locator).sendKeys(valueInput);
+	}
+	
+	public void sendKeysToElement(WebDriver driver, String locator, String valueInput, String...params) {
+		findElement(driver, locator, params).clear();
+		findElement(driver, locator, params).sendKeys(valueInput);
 	}
 
 ////click
@@ -97,5 +115,12 @@ public class BasePage {
 	public void selectDropdownByText(WebDriver driver, String locator, String textItem) {
 		select = new Select(getElement(driver, locator));
 		select.selectByVisibleText(textItem);
+	}
+////hover
+	public void hoverToElement(WebDriver driver, String locator) {
+		el = findElement(driver, locator);
+		action = new Actions(driver);
+		action.moveToElement(el).perform();
+		
 	}
 }
