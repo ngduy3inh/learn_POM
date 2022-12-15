@@ -6,10 +6,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 // tai' sd, selenium
 public class BasePage {
+	private WebDriverWait explicitWait;
+	private long timeout = GlobalContants.explicit_timeout;
 	private Select select;
 	private WebElement el;
 	private Actions action;
@@ -49,6 +54,20 @@ public class BasePage {
 
 	public By getByXpath(String locator, String... params) {
 		return By.xpath(String.format(locator, (Object[]) params));
+	}
+////wait
+	public void waitForElementVisible(WebDriver driver, String locator) {
+		explicitWait = new WebDriverWait(driver, timeout);
+		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+	}
+	
+	public void waitForElementVisible(WebDriver driver, String locator, String...params) {
+		explicitWait = new WebDriverWait(driver, timeout);
+		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator, params)));
+	}
+	public void waitForElementInvisible(WebDriver driver, String locator) {
+		explicitWait = new WebDriverWait(driver, timeout);
+		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
 	}
 
 ////findElement

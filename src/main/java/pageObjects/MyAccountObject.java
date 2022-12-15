@@ -3,26 +3,23 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import common.BasePage;
 import pageUls.LoginPageUI;
 import pageUls.MyAccountUI;
 import pageUls.RegisterPageUI;
+import pageUls.WishListUI;
 
-public class MyAccountObject extends BasePage {
+public class MyAccountObject extends LoginPageObejct {
 
 	WebDriver driver;
 
 	public MyAccountObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
 /////////////////////Login/////////////////////
 	public void inputToEmailTextbox(String email) {
 		sendKeysToElement(driver, LoginPageUI.EMAIL_TEXTBOX, email);
-	}
-
-	public void clickToLoginButton() {
-		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
 	}
 
 	public boolean isEmailErrorMessage(String value) {
@@ -114,17 +111,22 @@ public class MyAccountObject extends BasePage {
 				(driver, MyAccountUI.UPDATE_INFO_TEXTBOX, nameAttribute , nameTextbox);
 		return message.contains(value);
 	}
-
-	public boolean isNewUpdateAdrressInfo(String locator, String value) {
-		String message = getTextOfElement(driver, locator);
-		return message.contains(value);
+	public boolean isNewUpdateAddressInfo(String params,String value) {
+		String text = getTextOfElement(driver, MyAccountUI.UPDATED_ADDRESS_INFO, params);
+		return text.contains(value);
+		
 	}
+//	public boolean isNewUpdateAdrressInfo(String locator, String value) {
+//		String message = getTextOfElement(driver, locator);
+//		return message.contains(value);
+//	}
 	public boolean isUpdatedAdrressInfo(String name, String value) {
 		String message = getTextOfElement(driver, MyAccountUI.UPDATED_ADDRESS_INFO, name);
 		return message.contains(value);
 	}
 /////////////////////Address/////////////////////
 	public void clickToSaveAdressButton() {
+		waitForElementVisible(driver, MyAccountUI.SAVE_ADDRESS_BUTTON);
 		clickToElement(driver, MyAccountUI.SAVE_ADDRESS_BUTTON);
 	}
 
@@ -140,42 +142,34 @@ public class MyAccountObject extends BasePage {
 		sendKeysToElement(driver, MyAccountUI.FIRST_NAME_ADDRESS_TEXTBOX, firtName);
 	}
 
-	public void inputToLastNameAddressTextbox(String lastname) {
-		sendKeysToElement(driver, MyAccountUI.LAST_NAME_ADDRESS_TEXTBOX, lastname);
-	}
 
-	public void inputToEmailAddressTextbox(String email) {
-		sendKeysToElement(driver, MyAccountUI.EMAIL_TEXTBOX, email);
-	}
 
-	public void inputToCityAddressTextbox(String city) {
-		sendKeysToElement(driver, MyAccountUI.CITY_TEXTBOX, city);
-	}
 
-	public void inputToAddress1Textbox(String address1) {
-		sendKeysToElement(driver, MyAccountUI.ADDRESS1_TEXTBOX, address1);
-	}
+//	public void inputToCityAddressTextbox(String city) {
+//		sendKeysToElement(driver, MyAccountUI.CITY_TEXTBOX, city);
+//	}
+//
+//	public void inputToAddress1Textbox(String address1) {
+//		sendKeysToElement(driver, MyAccountUI.ADDRESS1_TEXTBOX, address1);
+//	}
 
-	public void inputToAddress2Textbox(String address2) {
-		sendKeysToElement(driver, MyAccountUI.ADDRESS2_TEXTBOX, address2);
-	}
+//	public void inputToAddress2Textbox(String address2) {
+//		sendKeysToElement(driver, MyAccountUI.ADDRESS2_TEXTBOX, address2);
+//	}
+//
+//	public void inputToZipCodeOrPortalCodeAddressTextbox(String zipcodeOrPortalcode) {
+//		sendKeysToElement(driver, MyAccountUI.ZIP_OR_POSTAL_CODE_TEXTBOX, zipcodeOrPortalcode);
+//	}
 
-	public void inputToZipCodeOrPortalCodeAddressTextbox(String zipcodeOrPortalcode) {
-		sendKeysToElement(driver, MyAccountUI.ZIP_OR_POSTAL_CODE_TEXTBOX, zipcodeOrPortalcode);
-	}
+//	public void inputToPhoneNumberAddressTextbox(String phoneNumber) {
+//		sendKeysToElement(driver, MyAccountUI.PHONE_NUMBER_TEXTBOX, phoneNumber);
+//	}
 
-	public void inputToPhoneNumberAddressTextbox(String phoneNumber) {
-		sendKeysToElement(driver, MyAccountUI.PHONE_NUMBER_TEXTBOX, phoneNumber);
-	}
+//	public void inputToFaxNumberAddressTextbox(String faxNumber) {
+//		sendKeysToElement(driver, MyAccountUI.FAX_NUMBER_TEXTBOX, faxNumber);
+//	}
 
-	public void inputToFaxNumberAddressTextbox(String faxNumber) {
-		sendKeysToElement(driver, MyAccountUI.FAX_NUMBER_TEXTBOX, faxNumber);
-	}
 
-	public void inputToCompanyAddressTextbox(String company) {
-		sendKeysToElement(driver, MyAccountUI.COMPANY_TEXTBOX, company);
-	}
-	
 	public void inputToUpdateInfoAddressTextbox(String nameTextbox, String value) {
 		sendKeysToElement(driver, MyAccountUI.UPDATE_INFO_ADDRESS_TEXTBOX, value, nameTextbox);
 	}
@@ -213,6 +207,11 @@ public class MyAccountObject extends BasePage {
 		String message = getTextOfElement(driver, MyAccountUI.PASSOWRD_CHANGED_NOTIFICATION);
 		return message.contains(value);
 
+	}
+	//close noti
+	public void clickToCloseNotifiCationAdded() {
+		clickToElement(driver, WishListUI.CLOSE_NOTIFICATION_MESSAGE);
+		waitForElementInvisible(driver, WishListUI.CLOSE_NOTIFICATION_MESSAGE);
 	}
 
 }

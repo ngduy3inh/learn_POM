@@ -49,12 +49,11 @@ public class TS_05_WishList {
 		System.out.println(wishList.findElement(driver, WishListUI.NOTIFICATION_MESSAGE).getText());
 		Assert.assertTrue(wishList.isAddedToShoppingCart("The product has been added to your wishlist"));
 		wishList.clickToCloseNotifiCationAdded();
-		BaseTest.sleepInSeconds(2);
 		wishList.clickToWishListLabel();
 		wishList.isNameProductAdded("Apple MacBook Pro 13-inch");
 	}
 
-	@Test
+	@Test      
 	public void TC_02_AddProductFromWishList() {
 		wishList.clickToWishListLabel();
 		wishList.tickToProductCheckbox();

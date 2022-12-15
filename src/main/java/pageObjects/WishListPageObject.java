@@ -21,11 +21,16 @@ public class WishListPageObject extends SearchPageObject {
 	}
 
 	public boolean isAddedToShoppingCart(String value) {
+		waitForElementVisible(driver, WishListUI.NOTIFICATION_MESSAGE);
 		String message = getTextOfElement(driver, WishListUI.NOTIFICATION_MESSAGE);
 		return message.contains(value);
 	}
+//	public void clickToCloseNotifiCationAdded() {
+//		clickToElement(driver, WishListUI.CLOSE_NOTIFICATION_MESSAGE);
+//	}
 	public void clickToCloseNotifiCationAdded() {
 		clickToElement(driver, WishListUI.CLOSE_NOTIFICATION_MESSAGE);
+		waitForElementInvisible(driver, WishListUI.CLOSE_NOTIFICATION_MESSAGE);
 	}
 	
 	public void clickToWishListLabel() {

@@ -12,6 +12,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import common.BaseTest;
 import pageObjects.SearchPageObject;
 import pageUls.SearchPageUI;
 
@@ -42,15 +43,16 @@ public class TS_04_Search {
 		searchPage.inputToSearchKeywordTextbox("");
 		searchPage.clickToSearchButton();
 
-		Assert.assertTrue(searchPage.isMiniumLengthCharacters("Search term minimum length is 3 characters"));
+		Assert.assertTrue(searchPage.isMiniumLengthCharacters
+				("Search term minimum length is 3 characters"));
 	}
 
 	@Test
 	public void TC_02_SearchWithDataExist() {
 		searchPage.inputToSearchKeywordTextbox("Macbook Pro 2040");
 		searchPage.clickToSearchButton();
-
-		Assert.assertTrue(searchPage.isMiniumLengthCharacters("No products were found that matched your criteria."));
+		Assert.assertTrue(searchPage.isMiniumLengthCharacters
+				("No products were found that matched your criteria."));
 	}
 
 	@Test
@@ -65,8 +67,13 @@ public class TS_04_Search {
 	@Test
 	public void TC_04_AdvanceSearchWithParentCategories() {
 		searchPage.inputToSearchKeywordTextbox("Apple Macbook Pro");
-		searchPage.tickToAdvancedSearchCheckbox();
+		searchPage.tickToSearchCheckbox("advs");
 		searchPage.enterTextToCategoryDropdown("Computers");
+		if(searchPage.isCheckboxChecked("isc") == false) {
+			System.out.println(searchPage.isCheckboxChecked("isc") + " unchecked");
+		}else {
+			searchPage.tickToSearchCheckbox("isc");
+		}
 		searchPage.clickToSearchButton();
 		Assert.assertTrue(searchPage.isNotProduct
 				("No products were found that matched your criteria."));
@@ -75,13 +82,13 @@ public class TS_04_Search {
 	@Test
 	public void TC_05_WithAdvanceSearchSubCategories() {
 		searchPage.inputToSearchKeywordTextbox("Apple Macbook Pro");
-		if (searchPage.isAdvancedSearchChecked() == true) {
-			System.out.println(searchPage.isAdvancedSearchChecked());
+		if (searchPage.isCheckboxChecked("advs") == true) {
+			System.out.println(searchPage.isCheckboxChecked("advs") + " checked");
 		} else {
-			searchPage.tickToAdvancedSearchCheckbox();
+			searchPage.tickToSearchCheckbox("advs");
 		}
 		searchPage.enterTextToCategoryDropdown("Computers");
-		searchPage.tickToAutomaticallySearchSubCategories();//
+		searchPage.isCheckboxChecked("isc");//
 		searchPage.clickToSearchButton();
 
 		Assert.assertTrue(searchPage.isVerifyKeysOfElements("Apple MacBook"));//

@@ -2,14 +2,14 @@ package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 
-import common.BasePage;
 import pageUls.LoginPageUI;
 
-public class LoginPageObejct extends BasePage {
+public class LoginPageObejct extends HeaderPageObject {
 	WebDriver driver;
 
 	// constructor
 	public LoginPageObejct(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
@@ -38,7 +38,7 @@ public class LoginPageObejct extends BasePage {
 		return message.contains(value);
 	}
 	
-	public boolean isHomePage(String value) {
+	public boolean isUrlHomePage(String value) {
 		String message = getCurrentPageUrl(driver);
 		return message.contains(value);
 	}

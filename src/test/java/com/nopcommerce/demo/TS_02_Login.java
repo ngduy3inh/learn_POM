@@ -10,17 +10,21 @@ import org.testng.annotations.Test;
 import common.BaseTest;
 import common.GlobalContants;
 import pageObjects.LoginPageObejct;
+import utils.DataFakerUtil;
 
 //test suit tap hop nhieu test case
 public class TS_02_Login extends BaseTest {
 	WebDriver driver;
 	LoginPageObejct loginPage;
+	DataFakerUtil dataFaker;
 
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName, "https://demo.nopcommerce.com/login?returnUrl=%2F");
+		
 		loginPage = new LoginPageObejct(driver);
+		dataFaker = DataFakerUtil.getData();
 	}
 
 	@AfterClass
@@ -46,7 +50,7 @@ public class TS_02_Login extends BaseTest {
 	@Test
 	public void TC_03_LoginWithUnregisteredEmail() {
 		loginPage.refeshCurrentPage(driver);
-		loginPage.inputToEmailTextbox(GlobalContants.unregisteredEmail);
+		loginPage.inputToEmailTextbox(dataFaker.getEmail());
 		loginPage.clickToLoginButton();
 		Assert.assertTrue(loginPage.isLoginErrorMessage
 				("Login was unsuccessful. Please correct the errors and try again."));
@@ -73,7 +77,7 @@ public class TS_02_Login extends BaseTest {
 	@Test
 	public void TC_06_LoginWithValidAccount() {
 		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.password);
-		Assert.assertTrue(loginPage.isHomePage("https://demo.nopcommerce.com/"));
+		Assert.assertTrue(loginPage.isUrlHomePage("https://demo.nopcommerce.com/"));
 		Assert.assertTrue(loginPage.isLoged("My account"));
 	}
 }

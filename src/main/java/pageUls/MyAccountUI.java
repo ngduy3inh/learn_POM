@@ -1,6 +1,8 @@
 package pageUls;
 
 public class MyAccountUI {
+//notif
+	public static final String CLOSE_NOTIFICATION_MESSAGE = "//span[@class='close']";
 /////////////////////Tab/////////////////////
 	public static final String ADDRESSES_TAB = "//li[@class='customer-addresses inactive']/a[text()='Addresses']";
 	public static final String CHANGE_PASSWORD_TAB = "//a[text()='Change password']";

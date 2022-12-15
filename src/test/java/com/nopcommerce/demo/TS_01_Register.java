@@ -79,9 +79,10 @@ public class TS_01_Register  {
 		registerPage.inputToConfirmPasswordTextbox(GlobalContants.password);
 
 		registerPage.clickToRegisterButton();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		Assert.assertTrue(registerPage.isRegisterComplete("Your registration completed"));
 		registerPage.clickToLabelOfMenu("logout");
-		BaseTest.sleepInSeconds(2);
+		
 	}
 
 	@Test

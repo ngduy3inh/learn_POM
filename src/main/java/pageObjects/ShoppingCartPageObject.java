@@ -6,10 +6,11 @@ import common.BasePage;
 import pageUls.ShoppingCartUI;
 import pageUls.WishListUI;
 
-public class ShoppingCartPageObject extends BasePage {
+public class ShoppingCartPageObject extends HeaderPageObject {
 	WebDriver driver;
 
 	public ShoppingCartPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 	
