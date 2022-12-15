@@ -41,16 +41,20 @@ public class TS_06_ShoppingCart extends BasePage{
 	@Test
 	public void TC_01_UpdateShoppingCart() {
 		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.password);
+		
 		shoppingCart.clickToShoppingCartLabel();
-		shoppingCart.inputQuantity("5");
+		shoppingCart.inputQuantityForProduct("HTC One M8 Android L 5.0 Lollipop","5");
+		shoppingCart.inputQuantityForProduct("Apple MacBook Pro 13-inch","5");
 		shoppingCart.clickToUpdateShoppingCartButton();
+		
 		Assert.assertTrue(shoppingCart.isUpdatedQuantityMacbook("5"));
 	}
 
 	@Test
 	void TC_02_RemoveFromCart() {
 		shoppingCart.clickToShoppingCartLabel();
-		shoppingCart.clickToRemoveProductMacbook();
+		shoppingCart.clickToRemoveProductInShoppingCart("HTC One M8 Android L 5.0 Lollipop");
+		shoppingCart.clickToRemoveProductInShoppingCart("Apple MacBook Pro 13-inch");
 		System.out.println(getTextOfElement(driver, ShoppingCartUI.SHOPPING_CART_EMPTY_MESSAGE));
 		Assert.assertTrue(shoppingCart.isShoppingCartEmpty("Your Shopping Cart is empty!"));
 	}

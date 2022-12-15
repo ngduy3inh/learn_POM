@@ -23,8 +23,8 @@ public class ShoppingCartPageObject extends HeaderPageObject {
 		clickToElement(driver, ShoppingCartUI.SHOPPING_CART_LABEL);
 	}
 	
-	public void inputQuantity(String valueInput) {
-		sendKeysToElement(driver, ShoppingCartUI.QUANTITY_MACBOOK_TEXTBOX, valueInput);
+	public void inputQuantityForProduct(String nameProductText, String valueInput) {
+		sendKeysToElement(driver, ShoppingCartUI.QUANTITY_OF_PRODUCT_TEXTBOX, valueInput, nameProductText);
 	}
 	
 	public void clickToUpdateShoppingCartButton() {
@@ -36,8 +36,8 @@ public class ShoppingCartPageObject extends HeaderPageObject {
 		return message.contains(value);
 	}
 	
-	public void clickToRemoveProductMacbook() {
-		clickToElement(driver, ShoppingCartUI.REMOVE_MACBOOK_SHOPPING_CART_BUTTON);
+	public void clickToRemoveProductInShoppingCart(String nameProduct) {
+		clickToElement(driver, ShoppingCartUI.REMOVE_PRODUCT_IN_SHOPPING_CART_BUTTON, nameProduct);
 	}
 	
 	public boolean isShoppingCartEmpty(String value) {
