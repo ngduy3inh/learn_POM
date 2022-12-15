@@ -14,9 +14,9 @@ public class ShoppingCartPageObject extends HeaderPageObject {
 		this.driver = driver;
 	}
 	
-	public boolean isNameProductAdded(String value) {
-		String message = getTextOfElement(driver, WishListUI.PRODUCT_NAME_TEXT);
-		return message.contains(value);
+	public boolean isNameProductAdded(String nameProduct) {
+		String message = getTextOfElement(driver, WishListUI.NAME_PRODUCT_IN_SHOPPING_CART, nameProduct);
+		return message.contains(nameProduct);
 	}
 	
 	public void clickToShoppingCartLabel() {

@@ -19,7 +19,6 @@ public class TS_01_Register  {
 	String projectPath = System.getProperty("user.dir");
 	RegisterPageObject registerPage;
 	DataFakerUtil dataFaker;
-	//HeaderPageObject headerPage;
 	String url = "https://demo.nopcommerce.com/register?returnUrl=%2F";
 
 	@BeforeClass
@@ -30,7 +29,6 @@ public class TS_01_Register  {
 		driver.manage().window().maximize();
 		registerPage = new RegisterPageObject(driver);
 		dataFaker = DataFakerUtil.getData();
-		//headerPage = new HeaderPageObject(driver);
 	}
 
 	@AfterClass
@@ -48,11 +46,6 @@ public class TS_01_Register  {
 		Assert.assertTrue(registerPage.isErrorMessage("Password", "Password is required."));
 		Assert.assertTrue(registerPage.isErrorMessage("ConfirmPassword", "Password is required."));
 
-//		Assert.assertTrue(registerPage.isFirstNameErrorMessage("First name is required."));
-//		Assert.assertTrue(registerPage.isLastNameErrorMessage("Last name is required."));
-//		Assert.assertTrue(registerPage.isEmailErrorMessage("Email is required."));
-//		Assert.assertTrue(registerPage.isPasswordErrorMessage("Password is required."));
-//		Assert.assertTrue(registerPage.isPasswordErrorMessage("Password is required."));
 	}
 
 	@Test
@@ -61,7 +54,6 @@ public class TS_01_Register  {
 		registerPage.inputToEmailTextbox(GlobalContants.wrongEmail);
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.isErrorMessage("Email", "Wrong email"));
-//		Assert.assertTrue(registerPage.isEmailErrorMessage("Wrong email"));
 	}
 
 	@Test
@@ -127,9 +119,6 @@ public class TS_01_Register  {
 				("Password", "Password must meet the following rules:"));
 		Assert.assertTrue(registerPage.isErrorMessage
 				("Password", "must have at least 6 characters"));
-
-//		Assert.assertTrue(registerPage.isPasswordErrorMessage("Password must meet the following rules:"));
-//		Assert.assertTrue(registerPage.isPasswordErrorMessage("must have at least 6 characters"));
 	}
 
 	@Test
@@ -150,8 +139,6 @@ public class TS_01_Register  {
 
 		Assert.assertTrue(registerPage.isErrorMessage
 				("ConfirmPassword", "The password and confirmation password do not match."));
-//		Assert.assertTrue(
-//				registerPage.isConfirmNotMatchErrorMessage("The password and confirmation password do not match."));
 
 	}
 

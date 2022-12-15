@@ -2,22 +2,27 @@ package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 
+import common.BasePage;
 import pageUls.WishListUI;
 
-public class WishListPageObject extends SearchPageObject {
+public class WishListPageObject extends BasePage {
 	WebDriver driver;
 
 	public WishListPageObject(WebDriver driver) {
-		super(driver);
+		//super(driver);
 		this.driver = driver;
 	}
 
 	public void chooseToMacbook() {
 		clickToElement(driver, WishListUI.APPLE_MACBOOK_PRO_13_INCH_TEXT);
 	}
+	public void chooseProduct(String nameProduct) {
+		waitForElementVisible(driver, WishListUI.NAME_PRODUCT, nameProduct);
+		clickToElement(driver, WishListUI.NAME_PRODUCT, nameProduct);
+	}
 
-	public void clickToAddToWishList() {
-		clickToElement(driver, WishListUI.ADD_TO_WISHLIST_BUTTON);
+	public void clickToAddToWishList(String idButton) {
+		clickToElement(driver, WishListUI.ADD_TO_WISHLIST_BUTTON, idButton);
 	}
 
 	public boolean isAddedToShoppingCart(String value) {
@@ -37,17 +42,17 @@ public class WishListPageObject extends SearchPageObject {
 		clickToElement(driver, WishListUI.WISTHLIST_LABEL);
 	}
 	
-	public boolean isNameProductAdded(String value) {
-		String message = getTextOfElement(driver, WishListUI.PRODUCT_NAME_TEXT);
-		return message.contains(value);
+	public boolean isNameProductAddedToWishlist(String nameProduct) {
+		String message = getTextOfElement(driver, WishListUI.NAME_PRODUCT_IN_WISHLIST, nameProduct);
+		return message.contains(nameProduct);
 	}
 	
 	public void clickToWishListAddToCartButton() {
 		clickToElement(driver, WishListUI.WISHLIST_ADD_TO_CART_BUTTON);
 	}
 	
-	public void tickToProductCheckbox() {
-		clickToElement(driver, WishListUI.TICK_TO_PRODUCT_CHECKBOX);
+	public void tickToProductCheckbox(String nameProduct) {
+		clickToElement(driver, WishListUI.PRODUCTS_IN_WISHLIST_CHECKBOX, nameProduct);
 	}
 	
 	public void clickToShoppingCartLabel() {

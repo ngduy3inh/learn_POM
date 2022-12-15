@@ -43,22 +43,38 @@ public class TS_05_WishList {
 	@Test
 	public void TC_01_AddToWishList() {
 		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.password);
-		wishList.chooseToMacbook();
-		wishList.clickToAddToWishList();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		System.out.println(wishList.findElement(driver, WishListUI.NOTIFICATION_MESSAGE).getText());
-		Assert.assertTrue(wishList.isAddedToShoppingCart("The product has been added to your wishlist"));
+		
+		wishList.chooseProduct("Apple MacBook Pro 13-inch");
+		wishList.clickToAddToWishList("4");
+		
+		Assert.assertTrue(wishList.isAddedToShoppingCart
+				("The product has been added to your wishlist"));
+		
+		wishList.clickToCloseNotifiCationAdded();
+		driver.navigate().back();
+		
+		wishList.chooseProduct("HTC One M8 Android L 5.0 Lollipop");
+		wishList.clickToAddToWishList("18");
+		
+		Assert.assertTrue(wishList.isAddedToShoppingCart
+				("The product has been added to your wishlist"));
+		
 		wishList.clickToCloseNotifiCationAdded();
 		wishList.clickToWishListLabel();
-		wishList.isNameProductAdded("Apple MacBook Pro 13-inch");
+		wishList.isNameProductAddedToWishlist("Apple MacBook Pro 13-inch");
+		wishList.isNameProductAddedToWishlist("HTC One M8 Android L 5.0 Lollipop");
 	}
 
 	@Test      
 	public void TC_02_AddProductFromWishList() {
 		wishList.clickToWishListLabel();
-		wishList.tickToProductCheckbox();
+		
+		wishList.tickToProductCheckbox("Apple MacBook Pro 13-inch");
+		wishList.tickToProductCheckbox("HTC One M8 Android L 5.0 Lollipop");
+		
 		wishList.clickToWishListAddToCartButton();
 		Assert.assertTrue(shoppingCart.isNameProductAdded("Apple MacBook Pro 13-inch"));
+		Assert.assertTrue(shoppingCart.isNameProductAdded("HTC One M8 Android L 5.0 Lollipop"));
 		wishList.clickToWishListLabel();
 		Assert.assertTrue(wishList.isNoData("The wishlist is empty!"));
 	}
