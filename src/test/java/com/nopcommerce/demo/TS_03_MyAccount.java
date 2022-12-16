@@ -1,12 +1,11 @@
 package com.nopcommerce.demo;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
@@ -15,24 +14,22 @@ import pageObjects.LoginPageObejct;
 import pageObjects.MyAccountObject;
 import pageObjects.RegisterPageObject;
 
-public class TS_03_MyAccount {
+public class TS_03_MyAccount extends BaseTest{
 	WebDriver driver;
-	String projectPath = System.getProperty("user.dir");
 	MyAccountObject myAccount;
 	LoginPageObejct loginPage;
 	RegisterPageObject registerPage;
 	String urlRrgister = "https://demo.nopcommerce.com/register?returnUrl=%2F";
 	String urlCustomerInfo = "https://demo.nopcommerce.com/customer/info";
 
+	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass() {
-		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver.exe");
-		driver = new FirefoxDriver();
+	public void beforeClass(String nameBrowser) {
+		driver = getBrowserDriver(nameBrowser, urlCustomerInfo);
+
 		loginPage = new LoginPageObejct(driver);
 		myAccount = new MyAccountObject(driver);
 		registerPage = new RegisterPageObject(driver);
-		driver.get(urlCustomerInfo);
-		driver.manage().window().maximize();
 	}
 
 	@AfterClass
@@ -83,7 +80,7 @@ public class TS_03_MyAccount {
 		Assert.assertTrue(myAccount.isNewUpdateAddressInfo("country", "Viet Nam"));
 	}
 
-	@Test
+	//@Test
 	public void TC_03_UpdatePassword() {
 		myAccount.clickToChangePasswordTab();
 

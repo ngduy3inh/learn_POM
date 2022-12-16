@@ -7,14 +7,12 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import common.BasePage;
 import common.GlobalContants;
 import pageObjects.LoginPageObejct;
 import pageObjects.ShoppingCartPageObject;
 import pageObjects.WishListPageObject;
-import pageUls.ShoppingCartUI;
 
-public class TS_06_ShoppingCart extends BasePage{
+public class TS_06_ShoppingCart{
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	String urlLogin = "https://demo.nopcommerce.com/login?returnUrl=%2F";
@@ -55,7 +53,7 @@ public class TS_06_ShoppingCart extends BasePage{
 		shoppingCart.clickToShoppingCartLabel();
 		shoppingCart.clickToRemoveProductInShoppingCart("HTC One M8 Android L 5.0 Lollipop");
 		shoppingCart.clickToRemoveProductInShoppingCart("Apple MacBook Pro 13-inch");
-		System.out.println(getTextOfElement(driver, ShoppingCartUI.SHOPPING_CART_EMPTY_MESSAGE));
+		//System.out.println(getTextOfElement(driver, ShoppingCartUI.SHOPPING_CART_EMPTY_MESSAGE));
 		Assert.assertTrue(shoppingCart.isShoppingCartEmpty("Your Shopping Cart is empty!"));
 	}
 }

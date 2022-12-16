@@ -92,6 +92,7 @@ public class RegisterPageObject extends HeaderPageObject {
 	}
 ////
 	public boolean isRegisterComplete(String value) {
+		waitForElementVisible(driver, RegisterPageUI.REGISTER_COMPLETE_TEXT_MESSAGE);
 		String message = getTextOfElement(driver, RegisterPageUI.REGISTER_COMPLETE_TEXT_MESSAGE);
 		return message.contains(value);
 

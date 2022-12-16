@@ -1,12 +1,10 @@
 package com.nopcommerce.demo;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
@@ -14,25 +12,23 @@ import common.GlobalContants;
 import pageObjects.LoginPageObejct;
 import pageObjects.ShoppingCartPageObject;
 import pageObjects.WishListPageObject;
-import pageUls.WishListUI;
 
-public class TS_05_WishList {
+public class TS_05_WishList extends BaseTest{
 	WebDriver driver;
-	String projectPath = System.getProperty("user.dir");
-	String urlLogin = "https://demo.nopcommerce.com/login?returnUrl=%2F";
+	
 	LoginPageObejct loginPage;
 	WishListPageObject wishList;
 	ShoppingCartPageObject shoppingCart;
-
+	
+	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass() {
-		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver.exe");
-		driver = new FirefoxDriver();
+	public void beforeClass(String nameBrowser) {
+		String urlLogin = "https://demo.nopcommerce.com/login?returnUrl=%2F";
+		driver = getBrowserDriver(nameBrowser, urlLogin);
+		
 		loginPage = new LoginPageObejct(driver);
 		wishList = new WishListPageObject(driver);
 		shoppingCart = new ShoppingCartPageObject(driver);
-		driver.get(urlLogin);
-		driver.manage().window().maximize();
 	}
 
 	@AfterClass

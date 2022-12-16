@@ -1,35 +1,28 @@
 package com.nopcommerce.demo;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
 import pageObjects.SearchPageObject;
-import pageUls.SearchPageUI;
 
-public class TS_04_Search {
+public class TS_04_Search extends BaseTest {
 	WebDriver driver;
-	String projectPath = System.getProperty("user.dir");
 	SearchPageObject searchPage;
-	String url = "https://demo.nopcommerce.com/search";
+	
 
+	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass() {
-
-		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver.exe");
-		driver = new FirefoxDriver();
+	public void beforeClass(String nameBrowser) {
+		String url = "https://demo.nopcommerce.com/search";
+		driver = getBrowserDriver(nameBrowser, url);
+		
 		searchPage = new SearchPageObject(driver);
-		driver.get(url);
-		driver.manage().window().maximize();
 
 	}
 

@@ -1,12 +1,11 @@
 package com.nopcommerce.demo;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
@@ -14,19 +13,18 @@ import common.GlobalContants;
 import pageObjects.RegisterPageObject;
 import utils.DataFakerUtil;
 
-public class TS_01_Register  {
+public class TS_01_Register extends BaseTest {
 	WebDriver driver;
-	String projectPath = System.getProperty("user.dir");
 	RegisterPageObject registerPage;
 	DataFakerUtil dataFaker;
-	String url = "https://demo.nopcommerce.com/register?returnUrl=%2F";
+	
 
+	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass() {
-		System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get(url);
-		driver.manage().window().maximize();
+	public void beforeClass(String browsweName) {
+		String url = "https://demo.nopcommerce.com/register?returnUrl=%2F";
+		driver = getBrowserDriver(browsweName, url);
+		
 		registerPage = new RegisterPageObject(driver);
 		dataFaker = DataFakerUtil.getData();
 	}
@@ -71,7 +69,6 @@ public class TS_01_Register  {
 		registerPage.inputToConfirmPasswordTextbox(GlobalContants.password);
 
 		registerPage.clickToRegisterButton();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		Assert.assertTrue(registerPage.isRegisterComplete("Your registration completed"));
 		registerPage.clickToLabelOfMenu("logout");
 		
