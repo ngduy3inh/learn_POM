@@ -63,7 +63,7 @@ public class TS_04_Search extends BaseTest {
 		searchPage.tickToSearchCheckbox("advs");
 		searchPage.enterTextToCategoryDropdown("Computers");
 		if(searchPage.isCheckboxChecked("isc") == false) {
-			System.out.println(searchPage.isCheckboxChecked("isc") + " unchecked");
+			System.out.println(searchPage.isCheckboxChecked("isc") + " is unchecked");
 		}else {
 			searchPage.tickToSearchCheckbox("isc");
 		}
@@ -76,7 +76,7 @@ public class TS_04_Search extends BaseTest {
 	public void TC_05_WithAdvanceSearchSubCategories() {
 		searchPage.inputToSearchKeywordTextbox("Apple Macbook Pro");
 		if (searchPage.isCheckboxChecked("advs") == true) {
-			System.out.println(searchPage.isCheckboxChecked("advs") + " checked");
+			System.out.println(searchPage.isCheckboxChecked("advs") + " is checked");
 		} else {
 			searchPage.tickToSearchCheckbox("advs");
 		}

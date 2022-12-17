@@ -16,11 +16,7 @@ public class ShoppingCartPageObject extends HeaderPageObject {
 	
 	public boolean isNameProductAdded(String nameProduct) {
 		String message = getTextOfElement(driver, WishListUI.NAME_PRODUCT_IN_SHOPPING_CART, nameProduct);
-		return message.contains(nameProduct);
-	}
-	
-	public void clickToShoppingCartLabel() {
-		clickToElement(driver, ShoppingCartUI.SHOPPING_CART_LABEL);
+		return message.contains(nameProduct); 
 	}
 	
 	public void inputQuantityForProduct(String nameProductText, String valueInput) {
@@ -32,7 +28,7 @@ public class ShoppingCartPageObject extends HeaderPageObject {
 	}
 	
 	public boolean isUpdatedQuantityMacbook(String value) {
-		String message = getAttributeValue(driver, ShoppingCartUI.QUANTITY_MACBOOK_TEXTBOX, "value");
+		String message = getAttribute(driver, ShoppingCartUI.QUANTITY_MACBOOK_TEXTBOX, "value");
 		return message.contains(value);
 	}
 	

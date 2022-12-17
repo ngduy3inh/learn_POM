@@ -1,34 +1,33 @@
 package com.nopcommerce.demo;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import common.BaseTest;
 import common.GlobalContants;
 import pageObjects.LoginPageObejct;
 import pageObjects.ShoppingCartPageObject;
 import pageObjects.WishListPageObject;
 
-public class TS_06_ShoppingCart{
+public class TS_06_ShoppingCart extends BaseTest{
 	WebDriver driver;
-	String projectPath = System.getProperty("user.dir");
-	String urlLogin = "https://demo.nopcommerce.com/login?returnUrl=%2F";
 	LoginPageObejct loginPage;
 	WishListPageObject wishList;
 	ShoppingCartPageObject shoppingCart;
-
+	
+	@Parameters("browser")
 	@BeforeTest
-	public void beforeTest() {
-		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver.exe");
-		driver = new FirefoxDriver();
+	public void beforeTest(String nameBrowser) {
+		String urlLogin = "https://demo.nopcommerce.com/login?returnUrl=%2F";
+		driver = getBrowserDriver(nameBrowser, urlLogin);
+		
 		loginPage = new LoginPageObejct(driver);
 		wishList = new WishListPageObject(driver);
 		shoppingCart = new ShoppingCartPageObject(driver);
-		driver.get(urlLogin);
-		driver.manage().window().maximize();
 	}
 
 	@AfterTest
@@ -40,7 +39,7 @@ public class TS_06_ShoppingCart{
 	public void TC_01_UpdateShoppingCart() {
 		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.password);
 		
-		shoppingCart.clickToShoppingCartLabel();
+		wishList.clickToLabelOfMenu("cart");
 		shoppingCart.inputQuantityForProduct("HTC One M8 Android L 5.0 Lollipop","5");
 		shoppingCart.inputQuantityForProduct("Apple MacBook Pro 13-inch","5");
 		shoppingCart.clickToUpdateShoppingCartButton();
@@ -50,7 +49,7 @@ public class TS_06_ShoppingCart{
 
 	@Test
 	void TC_02_RemoveFromCart() {
-		shoppingCart.clickToShoppingCartLabel();
+		wishList.clickToLabelOfMenu("cart");
 		shoppingCart.clickToRemoveProductInShoppingCart("HTC One M8 Android L 5.0 Lollipop");
 		shoppingCart.clickToRemoveProductInShoppingCart("Apple MacBook Pro 13-inch");
 		//System.out.println(getTextOfElement(driver, ShoppingCartUI.SHOPPING_CART_EMPTY_MESSAGE));

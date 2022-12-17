@@ -12,7 +12,6 @@ import common.GlobalContants;
 import pageObjects.LoginPageObejct;
 import utils.DataFakerUtil;
 
-//test suit tap hop nhieu test case
 public class TS_02_Login extends BaseTest {
 	WebDriver driver;
 	LoginPageObejct loginPage;

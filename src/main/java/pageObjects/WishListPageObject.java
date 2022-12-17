@@ -5,11 +5,11 @@ import org.openqa.selenium.WebDriver;
 import common.BasePage;
 import pageUls.WishListUI;
 
-public class WishListPageObject extends BasePage {
+public class WishListPageObject extends LoginPageObejct {
 	WebDriver driver;
 
 	public WishListPageObject(WebDriver driver) {
-		//super(driver);
+		super(driver);
 		this.driver = driver;
 	}
 
@@ -38,9 +38,9 @@ public class WishListPageObject extends BasePage {
 		waitForElementInvisible(driver, WishListUI.CLOSE_NOTIFICATION_MESSAGE);
 	}
 	
-	public void clickToWishListLabel() {
-		clickToElement(driver, WishListUI.WISTHLIST_LABEL);
-	}
+//	public void clickToWishListLabel() {
+//		clickToElement(driver, WishListUI.WISTHLIST_LABEL);
+//	}
 	
 	public boolean isNameProductAddedToWishlist(String nameProduct) {
 		String message = getTextOfElement(driver, WishListUI.NAME_PRODUCT_IN_WISHLIST, nameProduct);

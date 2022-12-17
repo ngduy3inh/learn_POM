@@ -37,11 +37,11 @@ public class MyAccountObject extends LoginPageObejct {
 		return message.contains(value);
 	}
 
-	public void loginWithAccount(String email, String password) {
-		sendKeysToElement(driver, LoginPageUI.EMAIL_TEXTBOX, email);
-		sendKeysToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
-		clickToLoginButton();
-	}
+//	public void loginWithAccount(String email, String password) {
+//		sendKeysToElement(driver, LoginPageUI.EMAIL_TEXTBOX, email);
+//		sendKeysToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
+//		clickToLoginButton();
+//	}
 
 	public void clickToSaveButton() {
 		clickToElement(driver, MyAccountUI.SAVE_INFO_BUTTON);
@@ -101,13 +101,13 @@ public class MyAccountObject extends LoginPageObejct {
 	}
 	
 	public boolean isNewValueUpdateInfo(String nameTextbox, String value) {
-		String message = getAttributeValue
+		String message = getAttribute
 				(driver, MyAccountUI.UPDATE_INFO_TEXTBOX, "value" , nameTextbox);
 		return message.contains(value);
 	}
 	
 	public boolean isNewUpdateInfo(String nameAttribute, String nameTextbox, String value) {
-		String message = getAttributeValue
+		String message = getAttribute
 				(driver, MyAccountUI.UPDATE_INFO_TEXTBOX, nameAttribute , nameTextbox);
 		return message.contains(value);
 	}

@@ -64,7 +64,7 @@ public class TS_01_Register extends BaseTest {
 		registerPage.enterTextToMonthDropdown("June");
 		registerPage.enterTexToYearDropdown("2002");
 		registerPage.inputToEmailTextbox(GlobalContants.email);
-		registerPage.inputToCompanyTextbox(GlobalContants.company);
+		registerPage.inputToCompanyTextbox("company A");
 		registerPage.inputToPasswordTextbox(GlobalContants.password);
 		registerPage.inputToConfirmPasswordTextbox(GlobalContants.password);
 
@@ -86,7 +86,7 @@ public class TS_01_Register extends BaseTest {
 		registerPage.enterTextToMonthDropdown("June");
 		registerPage.enterTexToYearDropdown("2002");
 		registerPage.inputToEmailTextbox(GlobalContants.email);
-		registerPage.inputToCompanyTextbox(GlobalContants.company);
+		registerPage.inputToCompanyTextbox("company A");
 		registerPage.inputToPasswordTextbox(GlobalContants.password);
 		registerPage.inputToConfirmPasswordTextbox(GlobalContants.password);
 		registerPage.clickToRegisterButton();
@@ -107,7 +107,7 @@ public class TS_01_Register extends BaseTest {
 		registerPage.enterTextToMonthDropdown("June");
 		registerPage.enterTexToYearDropdown("2002");
 		registerPage.inputToEmailTextbox(GlobalContants.email);
-		registerPage.inputToCompanyTextbox(GlobalContants.company);
+		registerPage.inputToCompanyTextbox("company A");
 		registerPage.inputToPasswordTextbox(GlobalContants.passwordLessThan6Characters);
 		registerPage.inputToConfirmPasswordTextbox(GlobalContants.passwordLessThan6Characters);
 		registerPage.clickToRegisterButton();
@@ -129,7 +129,7 @@ public class TS_01_Register extends BaseTest {
 		registerPage.enterTextToMonthDropdown("June");
 		registerPage.enterTexToYearDropdown("2002");
 		registerPage.inputToEmailTextbox(GlobalContants.email);
-		registerPage.inputToCompanyTextbox(GlobalContants.company);
+		registerPage.inputToCompanyTextbox("company A");
 		registerPage.inputToPasswordTextbox(GlobalContants.password);
 		registerPage.inputToConfirmPasswordTextbox("2");
 		registerPage.clickToRegisterButton();

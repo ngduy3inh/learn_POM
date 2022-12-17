@@ -16,7 +16,7 @@ import pageObjects.WishListPageObject;
 public class TS_05_WishList extends BaseTest{
 	WebDriver driver;
 	
-	LoginPageObejct loginPage;
+	//LoginPageObejct loginPage;
 	WishListPageObject wishList;
 	ShoppingCartPageObject shoppingCart;
 	
@@ -26,20 +26,19 @@ public class TS_05_WishList extends BaseTest{
 		String urlLogin = "https://demo.nopcommerce.com/login?returnUrl=%2F";
 		driver = getBrowserDriver(nameBrowser, urlLogin);
 		
-		loginPage = new LoginPageObejct(driver);
+		//loginPage = new LoginPageObejct(driver);
 		wishList = new WishListPageObject(driver);
 		shoppingCart = new ShoppingCartPageObject(driver);
 	}
 
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		//driver.quit();
 	}
 
 	@Test
 	public void TC_01_AddToWishList() {
-		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.password);
-		
+		wishList.loginWithAccount(GlobalContants.email, GlobalContants.password);
 		wishList.chooseProduct("Apple MacBook Pro 13-inch");
 		wishList.clickToAddToWishList("4");
 		
@@ -56,22 +55,22 @@ public class TS_05_WishList extends BaseTest{
 				("The product has been added to your wishlist"));
 		
 		wishList.clickToCloseNotifiCationAdded();
-		wishList.clickToWishListLabel();
+		wishList.clickToLabelOfMenu("wishlist");
 		wishList.isNameProductAddedToWishlist("Apple MacBook Pro 13-inch");
 		wishList.isNameProductAddedToWishlist("HTC One M8 Android L 5.0 Lollipop");
 	}
 
 	@Test      
 	public void TC_02_AddProductFromWishList() {
-		wishList.clickToWishListLabel();
+		wishList.clickToLabelOfMenu("wishlist");
 		
 		wishList.tickToProductCheckbox("Apple MacBook Pro 13-inch");
 		wishList.tickToProductCheckbox("HTC One M8 Android L 5.0 Lollipop");
-		
 		wishList.clickToWishListAddToCartButton();
+		
 		Assert.assertTrue(shoppingCart.isNameProductAdded("Apple MacBook Pro 13-inch"));
 		Assert.assertTrue(shoppingCart.isNameProductAdded("HTC One M8 Android L 5.0 Lollipop"));
-		wishList.clickToWishListLabel();
+		wishList.clickToLabelOfMenu("wishlist");
 		Assert.assertTrue(wishList.isNoData("The wishlist is empty!"));
 	}
 

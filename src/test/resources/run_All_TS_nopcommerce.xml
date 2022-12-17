@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="5">
+<!-- 	<listeners>
+		<listener class-name ="reportConfigV5.ExtentTestListener"></listener>
+	</listeners> -->
+	
+	<test name="Test case run on Firefox browser">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="com.nopcommerce.demo.TS_01_Register" />
+			<class name="com.nopcommerce.demo.TS_02_Login" />
+			<class name="com.nopcommerce.demo.TS_04_Search" />
+			<class name="com.nopcommerce.demo.TS_05_WishList" />
+			<class name="com.nopcommerce.demo.TS_06_ShoppingCart" />
+			<class name="com.nopcommerce.demo.TS_03_MyAccount" />
+		</classes>
+		
+		
+	</test> 
+</suite> <!-- Suite -->

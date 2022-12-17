@@ -13,13 +13,13 @@ import common.GlobalContants;
 import pageObjects.LoginPageObejct;
 import pageObjects.MyAccountObject;
 import pageObjects.RegisterPageObject;
+import utils.DataFakerUtil;
 
 public class TS_03_MyAccount extends BaseTest{
 	WebDriver driver;
 	MyAccountObject myAccount;
 	LoginPageObejct loginPage;
 	RegisterPageObject registerPage;
-	String urlRrgister = "https://demo.nopcommerce.com/register?returnUrl=%2F";
 	String urlCustomerInfo = "https://demo.nopcommerce.com/customer/info";
 
 	@Parameters("browser")
@@ -34,7 +34,7 @@ public class TS_03_MyAccount extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		//driver.quit();
 	}
 
 	@Test
@@ -55,7 +55,7 @@ public class TS_03_MyAccount extends BaseTest{
 	}
 
 	@Test
-	public void TC_02_AddAdress() {
+	public void TC_02_AddAddress() {
 		myAccount.clickToAddressTab();
 		myAccount.clickToAddNewButton();
 		myAccount.inputToUpdateInfoAddressTextbox("FirstName","abc");
@@ -80,7 +80,7 @@ public class TS_03_MyAccount extends BaseTest{
 		Assert.assertTrue(myAccount.isNewUpdateAddressInfo("country", "Viet Nam"));
 	}
 
-	//@Test
+	@Test
 	public void TC_03_UpdatePassword() {
 		myAccount.clickToChangePasswordTab();
 
@@ -91,8 +91,8 @@ public class TS_03_MyAccount extends BaseTest{
 		Assert.assertTrue(myAccount.isPassaWordChanged("Password was changed"));
 		
 		myAccount.clickToCloseNotifiCationAdded();
-		myAccount.clickToLogout();
-		myAccount.clickToLoginLabelMenu();
+		myAccount.clickToLabelOfMenu("logout");
+		myAccount.clickToLabelOfMenu("login");
 		myAccount.loginWithAccount(GlobalContants.email, GlobalContants.password);
 		Assert.assertTrue(myAccount.isLoginErrorMessage
 				("Login was unsuccessful. Please correct the errors and try again."));
