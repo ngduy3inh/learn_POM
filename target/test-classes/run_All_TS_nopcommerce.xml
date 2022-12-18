@@ -13,7 +13,7 @@
 			<class name="com.nopcommerce.demo.TS_04_Search" />
 			<class name="com.nopcommerce.demo.TS_05_WishList" />
 			<class name="com.nopcommerce.demo.TS_06_ShoppingCart" />
-			<class name="com.nopcommerce.demo.TS_03_MyAccount" />
+			<!-- <class name="com.nopcommerce.demo.TS_03_MyAccount" /> -->
 		</classes>
 	</test> 
 </suite> <!-- Suite -->
