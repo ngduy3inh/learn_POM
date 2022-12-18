@@ -49,6 +49,6 @@ public class DataTable extends BaseTest {
 		homePage.refeshCurrentPage(driver);
 		homePage.clickByIconCountryName("AFRICA", "remove");
 		homePage.inputToHeaderTextboxByName("Country", "AFRICA");
-		//homePage.recordStaleness("12253515", "AFRICA", "12599691", "24853148");
+		Assert.assertTrue(homePage.isDataRemoved("12253515", "AFRICA", "12599691", "24853148"));;
 	}
 }

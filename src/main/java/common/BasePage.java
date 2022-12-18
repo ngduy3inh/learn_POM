@@ -171,10 +171,12 @@ public class BasePage {
 		return findElement(driver, locator, params).isDisplayed();
 	}
 	
-	public void isElementExist(WebDriver driver,String locator, String name) {
-		els = findElements(driver, locator, name);
+	public boolean isElementExist(WebDriver driver,String locator, String...params) {
+		els = findElements(driver, locator, params);
 		if(els.size() == 0) {
-			
+			return true;
+		}else {
+			return false;
 		}
 	}
 

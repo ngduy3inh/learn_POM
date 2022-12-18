@@ -43,9 +43,9 @@ public class HomePageObject extends BasePage {
 		clickToElement(driver, HomePageUI.ICON_BY_COUNTRY_NAME, countryName, iconAction);
 	}
 	
-//	public boolean isRowRemoved() {
-//		isElementExist(driver, null, null);
-//	}
+	public boolean isDataRemoved(String female, String country, String males, String total) {
+		return isElementExist(driver, HomePageUI.ROW, female, country, males, total);
+	}
 
 }
 //td[@data-key='females' and text()= '12253515']//following-sibling::td[@data-key='country' and text()='AFRICA']//following-sibling::td[@data-key='males' and text()='12599691' ]//following-sibling::td[@data-key='total' and text()='24853148']
