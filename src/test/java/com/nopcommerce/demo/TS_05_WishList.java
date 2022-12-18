@@ -12,6 +12,7 @@ import common.GlobalContants;
 import pageObjects.LoginPageObejct;
 import pageObjects.ShoppingCartPageObject;
 import pageObjects.WishListPageObject;
+import reportConfigV5.ExtentTestManager;
 
 public class TS_05_WishList extends BaseTest{
 	WebDriver driver;
@@ -33,11 +34,12 @@ public class TS_05_WishList extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		//driver.quit();
+		driver.quit();
 	}
 
 	@Test
 	public void TC_01_AddToWishList() {
+		ExtentTestManager.startTest("Add To Wish List", "");
 		wishList.loginWithAccount(GlobalContants.email, GlobalContants.password);
 		wishList.chooseProduct("Apple MacBook Pro 13-inch");
 		wishList.clickToAddToWishList("4");
@@ -62,6 +64,7 @@ public class TS_05_WishList extends BaseTest{
 
 	@Test      
 	public void TC_02_AddProductFromWishList() {
+		ExtentTestManager.startTest("Add Product From Wish List", "");
 		wishList.clickToLabelOfMenu("wishlist");
 		
 		wishList.tickToProductCheckbox("Apple MacBook Pro 13-inch");

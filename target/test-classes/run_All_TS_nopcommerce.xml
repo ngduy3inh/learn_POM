@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="tests" thread-count="5">
-<!-- 	<listeners>
+<suite name="Suite">
+ 	<listeners>
 		<listener class-name ="reportConfigV5.ExtentTestListener"></listener>
-	</listeners> -->
+	</listeners> 
 	
 	<test name="Test case run on Firefox browser">
 		<parameter name="browser" value="firefox" />
@@ -15,7 +15,5 @@
 			<class name="com.nopcommerce.demo.TS_06_ShoppingCart" />
 			<class name="com.nopcommerce.demo.TS_03_MyAccount" />
 		</classes>
-		
-		
 	</test> 
 </suite> <!-- Suite -->

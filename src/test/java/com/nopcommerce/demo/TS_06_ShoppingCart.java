@@ -12,6 +12,7 @@ import common.GlobalContants;
 import pageObjects.LoginPageObejct;
 import pageObjects.ShoppingCartPageObject;
 import pageObjects.WishListPageObject;
+import reportConfigV5.ExtentTestManager;
 
 public class TS_06_ShoppingCart extends BaseTest{
 	WebDriver driver;
@@ -25,7 +26,6 @@ public class TS_06_ShoppingCart extends BaseTest{
 		String urlLogin = "https://demo.nopcommerce.com/login?returnUrl=%2F";
 		driver = getBrowserDriver(nameBrowser, urlLogin);
 		
-		loginPage = new LoginPageObejct(driver);
 		wishList = new WishListPageObject(driver);
 		shoppingCart = new ShoppingCartPageObject(driver);
 	}
@@ -37,7 +37,8 @@ public class TS_06_ShoppingCart extends BaseTest{
 
 	@Test
 	public void TC_01_UpdateShoppingCart() {
-		loginPage.loginWithAccount(GlobalContants.email, GlobalContants.password);
+		ExtentTestManager.startTest("Update Shopping Cart", "");
+		wishList.loginWithAccount(GlobalContants.email, GlobalContants.password);
 		
 		wishList.clickToLabelOfMenu("cart");
 		shoppingCart.inputQuantityForProduct("HTC One M8 Android L 5.0 Lollipop","5");
@@ -49,10 +50,10 @@ public class TS_06_ShoppingCart extends BaseTest{
 
 	@Test
 	void TC_02_RemoveFromCart() {
+		ExtentTestManager.startTest("Remove From Cart", "");
 		wishList.clickToLabelOfMenu("cart");
 		shoppingCart.clickToRemoveProductInShoppingCart("HTC One M8 Android L 5.0 Lollipop");
 		shoppingCart.clickToRemoveProductInShoppingCart("Apple MacBook Pro 13-inch");
-		//System.out.println(getTextOfElement(driver, ShoppingCartUI.SHOPPING_CART_EMPTY_MESSAGE));
 		Assert.assertTrue(shoppingCart.isShoppingCartEmpty("Your Shopping Cart is empty!"));
 	}
 }

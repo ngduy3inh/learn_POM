@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import common.BaseTest;
 import pageObjects.SearchPageObject;
+import reportConfigV5.ExtentTestManager;
 
 public class TS_04_Search extends BaseTest {
 	WebDriver driver;
@@ -33,6 +34,7 @@ public class TS_04_Search extends BaseTest {
 
 	@Test
 	public void TC_01_SearchWithEmtyData() {
+		ExtentTestManager.startTest("Search with emty data", "");
 		searchPage.inputToSearchKeywordTextbox("");
 		searchPage.clickToSearchButton();
 
@@ -42,6 +44,7 @@ public class TS_04_Search extends BaseTest {
 
 	@Test
 	public void TC_02_SearchWithDataExist() {
+		ExtentTestManager.startTest("Search With Data Exist", "");
 		searchPage.inputToSearchKeywordTextbox("Macbook Pro 2040");
 		searchPage.clickToSearchButton();
 		Assert.assertTrue(searchPage.isMiniumLengthCharacters
@@ -50,6 +53,7 @@ public class TS_04_Search extends BaseTest {
 
 	@Test
 	public void TC_03_SearchWithLenovoKeyword() {
+		ExtentTestManager.startTest("Search With Lenovo Keyword", "");
 		searchPage.inputToSearchKeywordTextbox("Lenovo");
 		searchPage.clickToSearchButton();
 
@@ -59,6 +63,7 @@ public class TS_04_Search extends BaseTest {
 
 	@Test
 	public void TC_04_AdvanceSearchWithParentCategories() {
+		ExtentTestManager.startTest("Advance Search With Parent Categories", "");
 		searchPage.inputToSearchKeywordTextbox("Apple Macbook Pro");
 		searchPage.tickToSearchCheckbox("advs");
 		searchPage.enterTextToCategoryDropdown("Computers");
@@ -74,6 +79,7 @@ public class TS_04_Search extends BaseTest {
 
 	@Test
 	public void TC_05_WithAdvanceSearchSubCategories() {
+		ExtentTestManager.startTest("With Advance Search SubCategories", "");
 		searchPage.inputToSearchKeywordTextbox("Apple Macbook Pro");
 		if (searchPage.isCheckboxChecked("advs") == true) {
 			System.out.println(searchPage.isCheckboxChecked("advs") + " is checked");

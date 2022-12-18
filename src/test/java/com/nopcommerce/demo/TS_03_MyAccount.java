@@ -13,6 +13,7 @@ import common.GlobalContants;
 import pageObjects.LoginPageObejct;
 import pageObjects.MyAccountObject;
 import pageObjects.RegisterPageObject;
+import reportConfigV5.ExtentTestManager;
 import utils.DataFakerUtil;
 
 public class TS_03_MyAccount extends BaseTest{
@@ -30,15 +31,17 @@ public class TS_03_MyAccount extends BaseTest{
 		loginPage = new LoginPageObejct(driver);
 		myAccount = new MyAccountObject(driver);
 		registerPage = new RegisterPageObject(driver);
+		
 	}
 
 	@AfterClass
 	public void afterClass() {
-		//driver.quit();
+		driver.quit();
 	}
 
 	@Test
 	public void TC_01_UpdateInfo() {
+		ExtentTestManager.startTest("Update Info", "");
 		myAccount.loginWithAccount(GlobalContants.email, GlobalContants.password);
 		Assert.assertTrue(loginPage.isLoged("My account"));
 		driver.get(urlCustomerInfo);
@@ -56,6 +59,7 @@ public class TS_03_MyAccount extends BaseTest{
 
 	@Test
 	public void TC_02_AddAddress() {
+		ExtentTestManager.startTest("Add Address", "");
 		myAccount.clickToAddressTab();
 		myAccount.clickToAddNewButton();
 		myAccount.inputToUpdateInfoAddressTextbox("FirstName","abc");
@@ -82,6 +86,7 @@ public class TS_03_MyAccount extends BaseTest{
 
 	@Test
 	public void TC_03_UpdatePassword() {
+		ExtentTestManager.startTest("Update Password", "");
 		myAccount.clickToChangePasswordTab();
 
 		myAccount.inputToOldPassWordTextbox(GlobalContants.password);

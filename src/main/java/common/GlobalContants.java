@@ -1,7 +1,7 @@
 package common;
 
 public class GlobalContants {
-	public static final String email = "defhpp@gmail.com";
+	public static final String email = "fake21@gmail.com";
 	public static final String wrongEmail = "autoweb4";
 	public static final String password = "342226";
 	public static final String newPassword = "3422261";
