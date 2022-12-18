@@ -30,17 +30,11 @@ public class WishListPageObject extends LoginPageObejct {
 		String message = getTextOfElement(driver, WishListUI.NOTIFICATION_MESSAGE);
 		return message.contains(value);
 	}
-//	public void clickToCloseNotifiCationAdded() {
-//		clickToElement(driver, WishListUI.CLOSE_NOTIFICATION_MESSAGE);
-//	}
+
 	public void clickToCloseNotifiCationAdded() {
 		clickToElement(driver, WishListUI.CLOSE_NOTIFICATION_MESSAGE);
 		waitForElementInvisible(driver, WishListUI.CLOSE_NOTIFICATION_MESSAGE);
 	}
-	
-//	public void clickToWishListLabel() {
-//		clickToElement(driver, WishListUI.WISTHLIST_LABEL);
-//	}
 	
 	public boolean isNameProductAddedToWishlist(String nameProduct) {
 		String message = getTextOfElement(driver, WishListUI.NAME_PRODUCT_IN_WISHLIST, nameProduct);
@@ -69,7 +63,4 @@ public class WishListPageObject extends LoginPageObejct {
 		return message.contains(value);
 	}
 	
-//	public void hoverToElementOfTopMenu() {
-//		hoverToElement(driver, HeaderPageUI.TOP_MENU_ELECTRO);
-//	}
 }

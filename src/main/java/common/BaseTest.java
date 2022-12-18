@@ -46,7 +46,6 @@ public class BaseTest {
 		try {
 			Thread.sleep(timeout * 1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

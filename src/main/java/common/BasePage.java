@@ -85,7 +85,7 @@ public class BasePage {
 		explicitWait = new WebDriverWait(driver, timeout);
 		explicitWait.until(ExpectedConditions.stalenessOf(getElement(driver, locator, params)));
 	}
-	/////
+	/////clickable
 	public void waitForClickable(WebDriver driver, String locator) {
 		explicitWait = new WebDriverWait(driver, timeout);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));

@@ -38,9 +38,6 @@ public class SearchPageObject extends HeaderPageObject {
 		clickToElement(driver, SearchPageUI.SEARCH_WITH_CHECKBOX, idCheckbox);
 	}
 
-//	public void tickToAdvancedSearchCheckbox() {
-//		clickToElement(driver, SearchPageUI.ADVENCED_SEARCH_CHECKBOX);
-//	}
 	//
 	public void enterTextToCategoryDropdown(String value) {
 		selectDropdownByText(driver, SearchPageUI.CATEGORY_DROPBOX, value);
@@ -49,20 +46,6 @@ public class SearchPageObject extends HeaderPageObject {
 	public void enterTextToManufacturerDropdown(String value) {
 		selectDropdownByText(driver, RegisterPageUI.DAY_DROPDOWN, value);
 	}
-
-//	public void tickToAutomaticallySearchSubCategories() {
-//		clickToElement(driver, SearchPageUI.AUTOMATICALLY_SEARCH_CHECKBOX);
-//	}
-//
-//	public boolean isAutomaticallyChecked() {
-//		WebElement e = findElement(driver, SearchPageUI.AUTOMATICALLY_SEARCH_CHECKBOX);
-//		boolean checked = e.isSelected();
-//		return true;
-//	}
-//
-//	public void tickToSearchInProductDescriptions() {
-//		clickToElement(driver, SearchPageUI.SEARCH_IN_PRODUCT_DESSCRIPTIONS_CHECKBOX);
-//	}
 
 	public boolean isNotProduct(String value) {
 		String message = getTextOfElement(driver, SearchPageUI.SEARCH_RESULTS_MESSAGE);

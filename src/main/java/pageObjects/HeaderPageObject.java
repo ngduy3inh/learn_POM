@@ -23,20 +23,4 @@ public class HeaderPageObject extends BasePage {
 		hoverToElement(driver, HeaderPageUI.TOP_MENU_ELECTRO);
 	}
 
-//	public void clickToLogout() {
-//		waitForElementVisible(driver, HeaderPageUI.LOGOUT_LABEL);
-//		clickToElement(driver, HeaderPageUI.LOGOUT_LABEL);
-//	}
-//	
-//	public void clickToLoginLabelMenu() {
-//		clickToElement(driver, HeaderPageUI.LOGIN_LABEL);
-//	}
-//	
-//	public void clickToWishListLabel() {
-//		clickToElement(driver, HeaderPageUI.WISHLIST_LABEL);
-//	}
-//	
-//	public void clickToShoppingCartLabel() {
-//		clickToElement(driver, HeaderPageUI.SHOPPING_CART_LABEL);
-//	}
 }

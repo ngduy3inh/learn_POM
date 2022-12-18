@@ -116,10 +116,6 @@ public class MyAccountObject extends LoginPageObejct {
 		return text.contains(value);
 		
 	}
-//	public boolean isNewUpdateAdrressInfo(String locator, String value) {
-//		String message = getTextOfElement(driver, locator);
-//		return message.contains(value);
-//	}
 	public boolean isUpdatedAdrressInfo(String name, String value) {
 		String message = getTextOfElement(driver, MyAccountUI.UPDATED_ADDRESS_INFO, name);
 		return message.contains(value);
@@ -141,34 +137,6 @@ public class MyAccountObject extends LoginPageObejct {
 	public void inputToFirstNameAddressTextbox(String firtName) {
 		sendKeysToElement(driver, MyAccountUI.FIRST_NAME_ADDRESS_TEXTBOX, firtName);
 	}
-
-
-
-
-//	public void inputToCityAddressTextbox(String city) {
-//		sendKeysToElement(driver, MyAccountUI.CITY_TEXTBOX, city);
-//	}
-//
-//	public void inputToAddress1Textbox(String address1) {
-//		sendKeysToElement(driver, MyAccountUI.ADDRESS1_TEXTBOX, address1);
-//	}
-
-//	public void inputToAddress2Textbox(String address2) {
-//		sendKeysToElement(driver, MyAccountUI.ADDRESS2_TEXTBOX, address2);
-//	}
-//
-//	public void inputToZipCodeOrPortalCodeAddressTextbox(String zipcodeOrPortalcode) {
-//		sendKeysToElement(driver, MyAccountUI.ZIP_OR_POSTAL_CODE_TEXTBOX, zipcodeOrPortalcode);
-//	}
-
-//	public void inputToPhoneNumberAddressTextbox(String phoneNumber) {
-//		sendKeysToElement(driver, MyAccountUI.PHONE_NUMBER_TEXTBOX, phoneNumber);
-//	}
-
-//	public void inputToFaxNumberAddressTextbox(String faxNumber) {
-//		sendKeysToElement(driver, MyAccountUI.FAX_NUMBER_TEXTBOX, faxNumber);
-//	}
-
 
 	public void inputToUpdateInfoAddressTextbox(String nameTextbox, String value) {
 		sendKeysToElement(driver, MyAccountUI.UPDATE_INFO_ADDRESS_TEXTBOX, value, nameTextbox);
